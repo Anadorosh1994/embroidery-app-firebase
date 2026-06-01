@@ -12,7 +12,8 @@ import {
   where,
   addDoc,
   updateDoc,
-  doc
+  doc,
+  deleteDoc
 } from 'firebase/firestore'
 
 type Process = {
@@ -316,15 +317,23 @@ console.log('Process error:', processError)
     const confirmed = confirm(
       'Удалить процесс?'
     )
-
+  
     if (!confirmed) return
-
-    await supabase
-      .from('processes')
-      .delete()
-      .eq('id', id)
-
-    fetchProcesses()
+  
+    try {
+      await deleteDoc(
+        doc(db, 'processes', id)
+      )
+  
+      const user = auth.currentUser
+  
+      if (user) {
+        fetchProcessesFirebase(user)
+      }
+    } catch (error) {
+      console.error(error)
+      alert('Ошибка удаления')
+    }
   }
 
   function handleEdit(process: Process) {
@@ -346,48 +355,87 @@ console.log('Process error:', processError)
 
   async function addStitches(processId: string) {
     const input = processInput[processId]
+  
     if (!input) return
   
     const amount = Number(input.stitches)
+  
     if (!amount || amount <= 0) return
   
-    const process = processes.find(p => p.id === processId)
+    const process = processes.find(
+      p => p.id === processId
+    )
+  
     if (!process) return
   
-    const sessionDate = input.date || new Date().toISOString().split('T')[0]
+    const sessionDate =
+      input.date ||
+      new Date()
+        .toISOString()
+        .split('T')[0]
   
-    const newValue = process.completed_stitches + amount
+    const newValue =
+      process.completed_stitches +
+      amount
   
-    // Проверяем, достигнут ли конец процесса
     let newStatus = process.status
-    if (process.total_stitches - newValue <= 0) {
+  
+    if (
+      process.total_stitches -
+        newValue <=
+      0
+    ) {
       newStatus = 'Завершён'
     }
   
-    // Сохраняем новое количество стежков и статус
-    await supabase
-      .from('processes')
-      .update({ 
-        completed_stitches: newValue,
-        status: newStatus
+    try {
+      // обновляем процесс
+  
+      await updateDoc(
+        doc(db, 'processes', processId),
+        {
+          completedStitches:
+            newValue,
+  
+          status: newStatus,
+        }
+      )
+  
+      // добавляем запись в history
+  
+      await addDoc(
+        collection(
+          db,
+          'processes',
+          processId,
+          'history'
+        ),
+        {
+          sessionDate,
+          stitches: amount,
+        }
+      )
+  
+      setProcessInput({
+        ...processInput,
+        [processId]: {},
       })
-      .eq('id', processId)
   
-    // Добавляем запись в историю прогресса
-    await supabase
-      .from('progress_history')
-      .insert({
-        process_id: processId,
-        session_date: sessionDate,
-        stitches: amount
-      })
+      const user =
+        auth.currentUser
   
-    setProcessInput({
-      ...processInput,
-      [processId]: {},
-    })
+      if (user) {
+        await fetchProcessesFirebase(
+          user
+        )
+      }
+    } catch (error) {
+      console.error(error)
   
-    fetchProcesses()
+      alert(
+        'Ошибка сохранения прогресса'
+      )
+    }
   }
 
   function resetForm() {
