@@ -1,7 +1,6 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { supabase } from '../lib/supabaseClient'
 import { auth, db } from '../lib/firebase'
 import { onAuthStateChanged } from 'firebase/auth'
 
@@ -13,7 +12,8 @@ import {
   addDoc,
   updateDoc,
   doc,
-  deleteDoc
+  deleteDoc,
+  orderBy
 } from 'firebase/firestore'
 
 type Process = {
@@ -82,56 +82,6 @@ const [historyTitle, setHistoryTitle] =
 
   const [sortOption, setSortOption] =
     useState('По умолчанию')
-
-    async function fetchProcesses() {
-      // 1. Получаем процессы с сортировкой по дате добавления
-      const { data: processesData, error: processError } = await supabase
-  .from('processes')
-  .select('*')
-  .order(sortField, { ascending: sortAscending }) // сортировка учитывает состояние
-        .order('created_at', { ascending: false }); // новые процессы сверху
-        console.log('Processes loaded:', processesData)
-console.log('Process error:', processError)
-    
-      if (processError) return console.log(processError);
-    
-      // 2. Для каждого процесса берём последнюю запись
-      const processesWithLastSession = await Promise.all(
-        (processesData as Process[]).map(async (p) => {
-          const { data: lastSession } = await supabase
-            .from('progress_history')
-            .select('*')
-            .eq('process_id', p.id)
-            .order('session_date', { ascending: false })
-            .limit(1)
-            .single(); // только последняя запись
-    
-          return {
-            ...p,
-            lastSession,
-          };
-        })
-      );
-    
-      // 3. Сохраняем процессы в состояние
-      setProcesses(processesWithLastSession);
-    
-      // 4. Обновляем статистику
-      setStats({
-        totalProcesses: processesData?.length || 0,
-        activeProcesses:
-          processesData?.filter((p) => p.status === 'Активен').length || 0,
-        completedProcesses:
-          processesData?.filter((p) => p.status === 'Завершён').length || 0,
-        totalStitchesCompleted:
-          processesData?.reduce((acc, p) => acc + p.completed_stitches, 0) || 0,
-        totalStitchesRemaining:
-          processesData?.reduce(
-            (acc, p) => acc + (p.total_stitches - p.completed_stitches),
-            0
-          ) || 0,
-      });
-    }
 
     
 
@@ -217,28 +167,48 @@ console.log('Process error:', processError)
       });
     }
 
-  async function openHistory(
-    processId: string,
-    processTitle: string
-  ) {
-    const { data, error } =
-      await supabase
-        .from('progress_history')
-        .select('*')
-        .eq('process_id', processId)
-        .order('session_date', {
-          ascending: false,
-        })
-  
-    if (error) {
-      console.log(error)
-      return
+    async function openHistory(
+      processId: string,
+      processTitle: string
+    ) {
+      try {
+        const historySnapshot =
+          await getDocs(
+            query(
+              collection(
+                db,
+                'processes',
+                processId,
+                'history'
+              ),
+              orderBy(
+                'sessionDate',
+                'desc'
+              )
+            )
+          )
+    
+        const historyData =
+          historySnapshot.docs.map(
+            doc => ({
+              id: doc.id,
+              ...doc.data(),
+            })
+          )
+    
+        setHistoryEntries(
+          historyData
+        )
+    
+        setHistoryTitle(
+          processTitle
+        )
+    
+        setHistoryOpen(true)
+      } catch (error) {
+        console.error(error)
+      }
     }
-  
-    setHistoryEntries(data || [])
-    setHistoryTitle(processTitle)
-    setHistoryOpen(true)
-  }
 
   useEffect(() => {
     const unsubscribe =
@@ -990,7 +960,7 @@ console.log('Process error:', processError)
         <ul className="space-y-2">
           {historyEntries.map((entry) => (
             <li key={entry.id} className="flex justify-between border-b py-2">
-              <span>{entry.session_date}</span>
+              <span>{entry.sessionDate}</span>
               <span>{entry.stitches} крестиков</span>
             </li>
           ))}
