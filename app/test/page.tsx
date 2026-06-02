@@ -30,7 +30,7 @@ alert(
       console.error(error);
     
       alert(
-        `${error.code}\n\n${error.message}`
+        `Код: ${error.code}\n\n${error.message}`
       );
     }
 
