@@ -33,7 +33,7 @@ alert(
         `Код: ${error.code}\n\n${error.message}`
       );
     }
-
+  };
 
   const createTestDocument = async () => {
     try {
