@@ -25,8 +25,10 @@ type Process = {
   completed_stitches: number
   cover_image_url: string
 
+  lastActivityDate?: string
+
   lastSession?: {
-    session_date: string
+    sessionDate: string
     stitches: number
   }
 }
@@ -117,11 +119,16 @@ const [historyTitle, setHistoryTitle] =
     
           cover_image_url:
             docSnapshot.data().imageUrl || "",
+            
+            lastActivityDate:
+  docSnapshot.data()
+    .lastActivityDate || "",
 
             createdAt:
   docSnapshot.data().createdAt || "",
         })
       );
+      
       processesData.sort((a: any, b: any) =>
         b.createdAt.localeCompare(
           a.createdAt
@@ -364,10 +371,12 @@ const [historyTitle, setHistoryTitle] =
       await updateDoc(
         doc(db, 'processes', processId),
         {
-          completedStitches:
-            newValue,
-  
+          completedStitches: newValue,
+      
           status: newStatus,
+      
+          lastActivityDate:
+            sessionDate,
         }
       )
   
@@ -447,7 +456,17 @@ const [historyTitle, setHistoryTitle] =
     processes: Process[]
   ) {
     const sorted = [...processes]
-
+    if (
+      sortOption ===
+      'По последней вышивке'
+    ) {
+      sorted.sort((a, b) =>
+        (b.lastActivityDate || '')
+          .localeCompare(
+            a.lastActivityDate || ''
+          )
+      )
+    }
     if (
       sortOption ===
       'По проценту выполнения'
@@ -708,6 +727,10 @@ const [historyTitle, setHistoryTitle] =
           </option>
 
           <option>
+  По последней вышивке
+</option>
+
+          <option>
             По проценту выполнения
           </option>
 
@@ -845,8 +868,10 @@ const [historyTitle, setHistoryTitle] =
   </button>
 </div>
 <h3 className="text-sm text-gray-500">
-  {process.lastSession
-    ? `${process.lastSession.session_date} • ${process.lastSession.stitches} крестиков`
+  {process.lastActivityDate
+    ? `Последняя вышивка: ${new Date(
+        process.lastActivityDate
+      ).toLocaleDateString('ru-RU')}`
     : 'Нет записей'}
 </h3>
 

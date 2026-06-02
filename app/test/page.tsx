@@ -8,7 +8,10 @@ import {
   collection,
   getDocs,
   updateDoc,
-  doc
+  doc,
+  query,
+  orderBy,
+  limit
 } from "firebase/firestore";
 
 export default function TestPage() {
@@ -23,11 +26,13 @@ console.log("Успешный вход:", result.user);
 alert(
   `Привет, ${result.user.displayName}!\n\nUID:\n${result.user.uid}`
 );
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
-      alert("Ошибка входа");
+    
+      alert(
+        `${error.code}\n\n${error.message}`
+      );
     }
-  };
 
 
   const createTestDocument = async () => {
@@ -82,6 +87,57 @@ alert(
       alert("Ошибка обновления");
     }
   };
+
+  const fillLastActivityDates = async () => {
+    try {
+      const snapshot = await getDocs(
+        collection(db, "processes")
+      );
+  
+      let updated = 0;
+  
+      for (const processDoc of snapshot.docs) {
+        const historySnapshot = await getDocs(
+          query(
+            collection(
+              db,
+              "processes",
+              processDoc.id,
+              "history"
+            ),
+            orderBy("sessionDate", "desc"),
+            limit(1)
+          )
+        );
+  
+        if (!historySnapshot.empty) {
+          const lastHistory =
+            historySnapshot.docs[0].data();
+  
+          await updateDoc(
+            doc(
+              db,
+              "processes",
+              processDoc.id
+            ),
+            {
+              lastActivityDate:
+                lastHistory.sessionDate,
+            }
+          );
+  
+          updated++;
+        }
+      }
+  
+      alert(
+        `Обновлено процессов: ${updated}`
+      );
+    } catch (error) {
+      console.error(error);
+      alert("Ошибка заполнения");
+    }
+  };
   return (
     <div style={{ padding: "40px" }}>
       <h1>Тест Firebase</h1>
@@ -101,6 +157,14 @@ alert(
   style={{ marginLeft: "10px" }}
 >
   Добавить userId
+</button>
+
+
+<button
+  onClick={fillLastActivityDates}
+  style={{ marginLeft: "10px" }}
+>
+  Заполнить lastActivityDate
 </button>
     </div>
   );
