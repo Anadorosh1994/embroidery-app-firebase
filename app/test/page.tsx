@@ -11,6 +11,9 @@ import {
   doc,
   query,
   orderBy,
+  collectionGroup,
+  getDoc,
+  deleteDoc,
   limit
 } from "firebase/firestore";
 
@@ -138,6 +141,127 @@ alert(
       alert("Ошибка заполнения");
     }
   };
+
+  const showHistory = async () => {
+  const snapshot = await getDocs(
+    collectionGroup(db, "history")
+  );
+
+  snapshot.forEach((doc) => {
+    console.log(
+      doc.ref.path,
+      doc.data()
+    );
+  });
+};
+const cleanOrphanHistory = async () => {
+  try {
+    const processesSnapshot =
+      await getDocs(
+        collection(db, "processes")
+      );
+
+    const processIds = new Set(
+      processesSnapshot.docs.map(
+        (doc) => doc.id
+      )
+    );
+
+    const historySnapshot =
+      await getDocs(
+        collectionGroup(
+          db,
+          "history"
+        )
+      );
+
+    let deleted = 0;
+
+    for (const historyDoc of historySnapshot.docs) {
+      const processId =
+        historyDoc.ref.parent.parent?.id;
+
+      if (
+        !processId ||
+        !processIds.has(processId)
+      ) {
+        await deleteDoc(
+          historyDoc.ref
+        );
+
+        deleted++;
+      }
+    }
+
+    alert(
+      `Удалено сиротских записей: ${deleted}`
+    );
+  } catch (error) {
+    console.error(error);
+    alert("Ошибка очистки");
+  }
+};
+
+const restoreHistory = async () => {
+  try {
+    const response = await fetch(
+      "/embroidery-backup.json"
+    );
+
+    const backup = await response.json();
+
+    let restored = 0;
+
+    for (const process of backup) {
+
+      const processRef = doc(
+        db,
+        "processes",
+        process.firebaseId
+      );
+    
+      const processSnapshot =
+        await getDoc(processRef);
+    
+      if (!processSnapshot.exists()) {
+        continue;
+      }
+    
+      if (
+        !process.history ||
+        process.history.length === 0
+      ) {
+        continue;
+      }
+    
+      for (const entry of process.history) {
+        await addDoc(
+          collection(
+            db,
+            "processes",
+            process.firebaseId,
+            "history"
+          ),
+          {
+            sessionDate: entry.sessionDate,
+            stitches: entry.stitches,
+          }
+        );
+    
+        restored++;
+      }
+    }
+
+    alert(
+      `Восстановлено записей: ${restored}`
+    );
+  } catch (error) {
+    console.error(error);
+    alert(
+      "Ошибка восстановления"
+    );
+  }
+};
   return (
     <div style={{ padding: "40px" }}>
       <h1>Тест Firebase</h1>
@@ -166,6 +290,14 @@ alert(
 >
   Заполнить lastActivityDate
 </button>
+
+<button
+  onClick={showHistory}
+  style={{ marginLeft: "10px" }}
+>
+  Показать историю
+</button>
+
     </div>
   );
 }

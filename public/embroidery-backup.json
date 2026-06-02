@@ -1,0 +1,1616 @@
+[
+  {
+    "firebaseId": "2W7im1VnnCZdf8x1inCc",
+    "status": "Активен",
+    "createdAt": "2026-06-01T07:28:38.45399+00:00",
+    "totalStitches": 949.5,
+    "oldId": "0a75554c-3b34-454a-bc21-4665d09c4602",
+    "imageUrl": "https://ir-8.ozone.ru/s3/multimedia-1-6/wc1000/10172986278.jpg",
+    "title": "Конь ветра \"Мимоза\"",
+    "completedStitches": 0,
+    "designer": "",
+    "history": []
+  },
+  {
+    "firebaseId": "2ozQk0UdC2DltCdxaD9u",
+    "completedStitches": 3170,
+    "title": "Самой холодной зимой",
+    "designer": "",
+    "totalStitches": 3170,
+    "status": "Завершён",
+    "createdAt": "2026-05-28T18:13:29.804158+00:00",
+    "oldId": "c49d544d-f9f1-4bdb-83fe-d0fe79ecc5ed",
+    "imageUrl": "https://i.ibb.co/Z6CkJLmj/IMG-20260529-171041.jpg",
+    "history": [
+      {
+        "id": "2YUJA513ahr20QtuCNB5",
+        "sessionDate": "2026-04-28",
+        "stitches": 182
+      },
+      {
+        "id": "5ONCf8ZoW23I9ZUfE7qf",
+        "sessionDate": "2026-05-02",
+        "stitches": 236
+      },
+      {
+        "id": "EQzqIloJHpQQSl8fUsvR",
+        "sessionDate": "2026-05-27",
+        "stitches": 174
+      },
+      {
+        "id": "GWejEWEo6iJFWAMHc9Te",
+        "sessionDate": "2026-05-24",
+        "stitches": 164
+      },
+      {
+        "id": "LqbIYYLyqX9M7kLwuyzP",
+        "sessionDate": "2026-04-21",
+        "stitches": 131
+      },
+      {
+        "id": "MAfQGoZMBvo1BFaAFuQP",
+        "sessionDate": "2026-05-25",
+        "stitches": 142
+      },
+      {
+        "id": "aw0tYXDYW2VDn6bLIMiZ",
+        "sessionDate": "2026-05-26",
+        "stitches": 137
+      },
+      {
+        "id": "bcaOTbsMRlXtxZFy9FUQ",
+        "sessionDate": "2026-05-22",
+        "stitches": 146
+      },
+      {
+        "id": "dcKqK8m8BfK0MonqZCMn",
+        "sessionDate": "2026-05-29",
+        "stitches": 114
+      },
+      {
+        "id": "gx556o3lM4hFy7YZOU5r",
+        "sessionDate": "2026-05-21",
+        "stitches": 216.5
+      },
+      {
+        "id": "hwOe74kjuIU4B2ifTMLr",
+        "sessionDate": "2026-05-01",
+        "stitches": 327
+      },
+      {
+        "id": "iz2wycGYifZ2jLAGJJiZ",
+        "sessionDate": "2026-04-24",
+        "stitches": 217
+      },
+      {
+        "id": "kyeKicLePpTxTq31TgfO",
+        "sessionDate": "2026-05-09",
+        "stitches": 340
+      },
+      {
+        "id": "ocFDMxfHWFSVAP2LZ27X",
+        "sessionDate": "2026-05-28",
+        "stitches": 35
+      },
+      {
+        "id": "p8guHlLn46ReqzL3zZ2K",
+        "sessionDate": "2026-05-13",
+        "stitches": 176
+      },
+      {
+        "id": "rTFFGzK0ABDAV64axzPD",
+        "sessionDate": "2026-05-07",
+        "stitches": 301
+      },
+      {
+        "id": "wlUTXjBVEhyWGwmELovV",
+        "sessionDate": "2026-05-14",
+        "stitches": 131.5
+      }
+    ]
+  },
+  {
+    "firebaseId": "3fN6OdqFm2I1mxkQmcju",
+    "oldId": "ec861264-58d0-43fc-bd86-d1b8a39377af",
+    "imageUrl": "https://www.stitch.su/images/patterns/big/50858.jpg",
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:42:55.385771+00:00",
+    "totalStitches": 1542,
+    "designer": "Ксения Адоньева",
+    "title": "Санта-Клаус",
+    "completedStitches": 1542,
+    "history": [
+      {
+        "id": "1f221whKt8rKBDA7JRX1",
+        "sessionDate": "2026-04-03",
+        "stitches": 135
+      },
+      {
+        "id": "66AhMgwZuKXrLSk6bBvh",
+        "sessionDate": "2026-04-24",
+        "stitches": 137
+      },
+      {
+        "id": "FDUtcaGjWER52JJ8Va5H",
+        "sessionDate": "2026-04-23",
+        "stitches": 79
+      },
+      {
+        "id": "JDd4F5Q0aHw3hyItHsCJ",
+        "sessionDate": "2026-03-06",
+        "stitches": 83
+      },
+      {
+        "id": "Olt5zWNbEg66TAo1Nh5y",
+        "sessionDate": "2026-03-05",
+        "stitches": 70
+      },
+      {
+        "id": "QFaXPN4CtTj9fJAQn03P",
+        "sessionDate": "2026-02-13",
+        "stitches": 214
+      },
+      {
+        "id": "XbtnhZQGyZtH1sPJb4oX",
+        "sessionDate": "2026-01-13",
+        "stitches": 124
+      },
+      {
+        "id": "e6imX05WjUaSQ0ffkeGA",
+        "sessionDate": "2026-02-11",
+        "stitches": 105
+      },
+      {
+        "id": "eGFbQ9zgXu0MzfnWayhS",
+        "sessionDate": "2026-03-07",
+        "stitches": 201
+      },
+      {
+        "id": "m7ma4y3jCgxxKzLXldv1",
+        "sessionDate": "2026-04-26",
+        "stitches": 349
+      },
+      {
+        "id": "nHC9FxMQAIGsHRBySCL4",
+        "sessionDate": "2026-03-02",
+        "stitches": 45
+      }
+    ]
+  },
+  {
+    "firebaseId": "40cLiTiusPe0K41tneNs",
+    "totalStitches": 3159,
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:28:41.881965+00:00",
+    "oldId": "be35d5ce-1205-4108-8c57-d08eacc92029",
+    "imageUrl": "https://main-cdn.sbermegamarket.ru/big1/hlr-system/101/977/722/152/419/4/600006908811b0.jpeg",
+    "completedStitches": 647,
+    "title": "Морские магниты",
+    "designer": "Жар-птица",
+    "history": []
+  },
+  {
+    "firebaseId": "4tEBVxmnPzoSjB1PnSJ5",
+    "totalStitches": 1952,
+    "status": "Активен",
+    "createdAt": "2026-05-29T10:09:00.738025+00:00",
+    "oldId": "bc346960-577e-4f32-a1a7-ffe893168720",
+    "imageUrl": "https://ir.ozone.ru/s3/multimedia-k/wc1000/6857123348.jpg",
+    "title": "Блокнот",
+    "completedStitches": 594.5,
+    "designer": "Emka\r\n",
+    "history": []
+  },
+  {
+    "firebaseId": "5Q9MJbYgQaC9z0NAQfe5",
+    "completedStitches": 2587,
+    "title": "Вечер в Венеции",
+    "designer": "Чудесная игла",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:26:57.907654+00:00",
+    "totalStitches": 39378,
+    "oldId": "2582690f-d7e0-4322-80a3-22d15a4b44b8",
+    "imageUrl": "https://static.airis.spb.ru/upload/iblock/738/f0pt0b5c49z63qzjcnm6evj335274i93/697150_00.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "6JogkuEcJ7Wm1EHy99hA",
+    "totalStitches": 1208,
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:37:56.696976+00:00",
+    "oldId": "356146ec-15bd-4867-9b64-426786e12e5b",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=079a239d73ac5b6fd11c5c63e80718c8b6e3756e-4828749-images-thumbs&n=13",
+    "completedStitches": 1208,
+    "title": "Мишка-шар",
+    "designer": "Golden Hands",
+    "history": [
+      {
+        "id": "BEpsvLgKp6eU1oKPYqaG",
+        "sessionDate": "2026-05-10",
+        "stitches": 623
+      },
+      {
+        "id": "YnSEo7P0IX06yDf5R2KH",
+        "sessionDate": "2026-05-11",
+        "stitches": 71
+      },
+      {
+        "id": "k1hlKpSLx4qmmVKo33mk",
+        "sessionDate": "2026-05-05",
+        "stitches": 98
+      },
+      {
+        "id": "tPXjaufhE5WvmjD2OTD4",
+        "sessionDate": "2026-05-04",
+        "stitches": 100
+      },
+      {
+        "id": "vJpk88Av2OrVGm0GAKHr",
+        "sessionDate": "2026-05-06",
+        "stitches": 316
+      }
+    ]
+  },
+  {
+    "firebaseId": "6RcyphTQZdSaM99CCap2",
+    "completedStitches": 2641.5,
+    "title": "Теплая осень",
+    "designer": "Риолис",
+    "totalStitches": 19933.5,
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:16:08.79918+00:00",
+    "oldId": "8d6e6da3-d5ed-4b58-ace5-9a360a454ce5",
+    "imageUrl": "https://static.airis.spb.ru/upload/iblock/a8e/ostqz2xj6ob2lab3wc1jilgb50n1il4l/901870_07.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "8OA931bPCiFsu0wOiCYX",
+    "title": "Утро на побережье",
+    "completedStitches": 645.5,
+    "designer": "Алиса",
+    "totalStitches": 37053,
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:26:01.161637+00:00",
+    "oldId": "89926a36-db39-4e25-8f4b-bbbf77e7cb75",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/5255974/img_id3744727302832106305.jpeg/orig",
+    "history": []
+  },
+  {
+    "firebaseId": "9fb3h9L6gS1mVwuG7q4J",
+    "oldId": "f7fc7577-9ebf-4807-81ae-9701e1d24e81",
+    "imageUrl": "https://static.airis.spb.ru/upload/iblock/81f/7auvc84z9vluzbymhl5ajnn2eb23hebt/612319_06.jpg",
+    "totalStitches": 3908.5,
+    "createdAt": "2026-05-29T14:33:24.479117+00:00",
+    "status": "Активен",
+    "designer": "Жар-птица",
+    "title": "Сладости для радости",
+    "completedStitches": 768,
+    "history": []
+  },
+  {
+    "firebaseId": "A8E7se8D03YmBSCJBLNX",
+    "designer": "Надежда Маштакова",
+    "title": "Национальная библиотека.Минск",
+    "completedStitches": 3869,
+    "oldId": "7b19f094-bedd-4d6e-b165-7cf0a473ae89",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/f/tpoc93d0p2enyww_ec21db20.jpg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:29:33.439387+00:00",
+    "totalStitches": 6528.5,
+    "history": []
+  },
+  {
+    "firebaseId": "DiPCJYqomszKglpgVL7C",
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:49:26.31141+00:00",
+    "totalStitches": 1399,
+    "oldId": "ef9667e0-cbb7-40d4-bb40-b382f47d6e05",
+    "imageUrl": "https://yavyshivayu.ru/image/cache/catalog/nabory/javyshivaju/photo_2026-03-02_09-34-35-800x600.jpg",
+    "title": "Малиновка",
+    "completedStitches": 1399,
+    "designer": "Я вышиваю",
+    "history": [
+      {
+        "id": "2N864tAxgJfoFB1jNkzo",
+        "sessionDate": "2026-04-13",
+        "stitches": 39
+      },
+      {
+        "id": "9ecRLRU0DjKa0rNLI7nc",
+        "sessionDate": "2026-04-20",
+        "stitches": 141
+      },
+      {
+        "id": "DPAQzwmO4bfXIwZI0G2U",
+        "sessionDate": "2026-04-16",
+        "stitches": 98
+      },
+      {
+        "id": "UPcA0VmkMW3Asg2MYgtM",
+        "sessionDate": "2026-04-14",
+        "stitches": 189
+      },
+      {
+        "id": "dlS5qZuSoBC24TKAFtJA",
+        "sessionDate": "2026-04-06",
+        "stitches": 208
+      },
+      {
+        "id": "eDUJEo0gs4kvWJn0h7zu",
+        "sessionDate": "2026-04-15",
+        "stitches": 196
+      },
+      {
+        "id": "jvMPDo92NTUrX8BhcIg6",
+        "sessionDate": "2026-04-07",
+        "stitches": 197
+      },
+      {
+        "id": "nT7tlXKt2rVBzfEg3A1z",
+        "sessionDate": "2026-04-12",
+        "stitches": 148
+      },
+      {
+        "id": "sVKFkxk9jlZHomHpeCqO",
+        "sessionDate": "2026-04-17",
+        "stitches": 34
+      },
+      {
+        "id": "us96tNzB9NFaYh8OuTcd",
+        "sessionDate": "2026-04-08",
+        "stitches": 149
+      }
+    ]
+  },
+  {
+    "firebaseId": "EhLEWVMZ8OGBUVKlU3fq",
+    "designer": "Панна",
+    "title": "Денежная гора",
+    "completedStitches": 1621.5,
+    "oldId": "c82ec4bb-b1e6-4d69-999e-a73a2268273c",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/5346238/img_id8957291231206622299.jpeg/orig",
+    "createdAt": "2026-05-29T14:41:22.954695+00:00",
+    "status": "Активен",
+    "totalStitches": 7975.5,
+    "history": []
+  },
+  {
+    "firebaseId": "FKXSHLFdExLJsULT97FD",
+    "oldId": "5758e2ae-c325-4620-9d23-96d32c596fe6",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/15284069/2a00000198a3144b427866b7c4c002e105c5/orig",
+    "createdAt": "2026-05-29T15:10:11.606356+00:00",
+    "status": "Активен",
+    "totalStitches": 10111.5,
+    "designer": "Чудесная игла",
+    "title": "Праздник урожая",
+    "completedStitches": 235,
+    "history": []
+  },
+  {
+    "firebaseId": "GL00SnWX0b5UcQudyDbf",
+    "designer": "Евгения Полуэктова",
+    "completedStitches": 5353.5,
+    "title": "Рождественские истории",
+    "oldId": "8a7f0b4c-2598-4780-9002-e80f242baaf5",
+    "imageUrl": "https://polustitch.ru/wp-content/uploads/2022/11/51-30.jpg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:38:38.788978+00:00",
+    "totalStitches": 10795,
+    "history": []
+  },
+  {
+    "firebaseId": "GeYJ86IjSm23KIQvCvL2",
+    "createdAt": "2026-05-29T15:13:24.717233+00:00",
+    "status": "Активен",
+    "totalStitches": 16272.5,
+    "oldId": "8c4ea31f-053e-4817-8d44-c99f4b415ea0",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/20036630/2a0000019d730c3e4ef0c6455e1a43dd4ad8/optimize",
+    "title": "Дом на озере",
+    "completedStitches": 353,
+    "designer": "Amishop",
+    "history": []
+  },
+  {
+    "firebaseId": "GuWmBKt7wah0arUJawJs",
+    "title": "Маякоша",
+    "completedStitches": 1313,
+    "designer": "Любовь Воденикова",
+    "totalStitches": 5003,
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:35:44.082413+00:00",
+    "oldId": "3307a330-0f58-42f7-9ad3-b5d07080d000",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/c/dxdepyy6gmj48fm_1fb05b2.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "H3Wj8Ifn74SNu9CRgHpf",
+    "createdAt": "2026-05-29T15:30:16.180967+00:00",
+    "status": "Завершён",
+    "totalStitches": 2354,
+    "oldId": "b569dd2b-ebf9-49a6-b103-2e3d831aa4c1",
+    "imageUrl": "https://ir-8.ozone.ru/s3/multimedia-1-d/wc1000/7518391141.jpg",
+    "title": "Бабушкина герань",
+    "completedStitches": 2354,
+    "designer": "",
+    "history": [
+      {
+        "id": "2NYQJproTscSTAWYVcrN",
+        "sessionDate": "2026-05-20",
+        "stitches": 162
+      },
+      {
+        "id": "7RPvBTp3IO0OFVMoRYSZ",
+        "sessionDate": "2026-04-10",
+        "stitches": 262
+      },
+      {
+        "id": "AGzckP9tBGL6iEVczADc",
+        "sessionDate": "2026-04-07",
+        "stitches": 86
+      },
+      {
+        "id": "BEEdE5q4XF4GNaOPjYTO",
+        "sessionDate": "2026-01-12",
+        "stitches": 118
+      },
+      {
+        "id": "MBQihi97zSe51g1JwYCc",
+        "sessionDate": "2026-05-19",
+        "stitches": 346.5
+      },
+      {
+        "id": "TStN1VTjg2QO3fLC8dFi",
+        "sessionDate": "2026-05-18",
+        "stitches": 315.5
+      },
+      {
+        "id": "XlSjJBIQsQ9JLrJrkJ4g",
+        "sessionDate": "2026-04-11",
+        "stitches": 136
+      },
+      {
+        "id": "bnZMbkm1NqV4cazx3NuA",
+        "sessionDate": "2026-04-08",
+        "stitches": 75
+      },
+      {
+        "id": "cRLqGMegfzDdTyVIOs4X",
+        "sessionDate": "2026-04-06",
+        "stitches": 70
+      },
+      {
+        "id": "kBPYRAAzVttTl7eBIdK6",
+        "sessionDate": "2026-04-09",
+        "stitches": 112
+      }
+    ]
+  },
+  {
+    "firebaseId": "KFyxHpngDMNoog9m4ERh",
+    "totalStitches": 15241,
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:11:41.927224+00:00",
+    "oldId": "f070d4e9-c2f9-454c-89c3-eabbc46d36c6",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/15284069/2a0000019ac812188706925772f2bd593390/orig",
+    "title": "Бесконечное лето",
+    "completedStitches": 1170.5,
+    "designer": "Овен",
+    "history": []
+  },
+  {
+    "firebaseId": "KVHRDE35lwYtswPD9MXr",
+    "completedStitches": 2758,
+    "title": "Весенние флажки",
+    "designer": "Елена Ларцова",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:20:04.023895+00:00",
+    "totalStitches": 24744.5,
+    "oldId": "d6fb8ba5-2ce0-4305-a843-abec43abb42f",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/e/m3v0ukci4aj7ta0_24cebbc5.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "KkKM6VMjnVQPay6n3UiW",
+    "designer": "Я вышиваю",
+    "completedStitches": 10428.5,
+    "title": "Мороз",
+    "oldId": "89e1a9ce-b510-4412-8635-37ba24927ba6",
+    "imageUrl": "",
+    "totalStitches": 10428.5,
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:48:47.220637+00:00",
+    "history": [
+      {
+        "id": "0nWqrV4XPKysAbEiARFb",
+        "sessionDate": "2026-03-03",
+        "stitches": 357
+      },
+      {
+        "id": "1YSUbTackJHO06md3T67",
+        "sessionDate": "2026-03-31",
+        "stitches": 505
+      },
+      {
+        "id": "3OjBYpLdgNwK8iLKb10X",
+        "sessionDate": "2026-03-28",
+        "stitches": 321
+      },
+      {
+        "id": "4kjIN4UcPAyB9V4BhOQg",
+        "sessionDate": "2026-03-21",
+        "stitches": 215
+      },
+      {
+        "id": "52lR8Nk2cO9lyukCVw4m",
+        "sessionDate": "2026-02-26",
+        "stitches": 183
+      },
+      {
+        "id": "7nvHbYsUTfcow7XkET98",
+        "sessionDate": "2026-02-24",
+        "stitches": 216
+      },
+      {
+        "id": "B9T2LPeMFutNZi916suI",
+        "sessionDate": "2026-03-29",
+        "stitches": 459
+      },
+      {
+        "id": "BnaU48Gnf38MwQOQMl8m",
+        "sessionDate": "2026-03-10",
+        "stitches": 173
+      },
+      {
+        "id": "CeYi3i6LFpSXeyikL8su",
+        "sessionDate": "2026-02-28",
+        "stitches": 349
+      },
+      {
+        "id": "EgADMDgcyyiQzxKRcExS",
+        "sessionDate": "2026-04-04",
+        "stitches": 423.5
+      },
+      {
+        "id": "JiLbXIyti3Q9dw9f9w49",
+        "sessionDate": "2026-02-04",
+        "stitches": 97
+      },
+      {
+        "id": "LBpQ0HYjombTo6VNX2Id",
+        "sessionDate": "2026-02-16",
+        "stitches": 138
+      },
+      {
+        "id": "LE2A2yo1oIDtzDkLrtz0",
+        "sessionDate": "2026-02-11",
+        "stitches": 146
+      },
+      {
+        "id": "LHkx3R70FIkbsjuzy85o",
+        "sessionDate": "2026-03-02",
+        "stitches": 182
+      },
+      {
+        "id": "O1B7x3H5djdXth9jRKaa",
+        "sessionDate": "2026-03-30",
+        "stitches": 217
+      },
+      {
+        "id": "PK8su6VSa0rDYo9Xkxcf",
+        "sessionDate": "2026-03-13",
+        "stitches": 243.5
+      },
+      {
+        "id": "PKqeM5l36ffAMCPRc5FQ",
+        "sessionDate": "2026-02-25",
+        "stitches": 50
+      },
+      {
+        "id": "PQTHgLD4jDA26g4FC22m",
+        "sessionDate": "2026-02-21",
+        "stitches": 160
+      },
+      {
+        "id": "QaNhBcViPTBk9r1SV2gV",
+        "sessionDate": "2026-02-06",
+        "stitches": 398
+      },
+      {
+        "id": "RE8U3bmAP7sVsv23fMQU",
+        "sessionDate": "2026-02-09",
+        "stitches": 150
+      },
+      {
+        "id": "WtIdHouUgUtDyw701mMC",
+        "sessionDate": "2026-02-02",
+        "stitches": 202
+      },
+      {
+        "id": "X2wPEyYVTa7UFHPVZgIx",
+        "sessionDate": "2026-03-06",
+        "stitches": 256
+      },
+      {
+        "id": "XAaye5wN2mqX75XFMy6U",
+        "sessionDate": "2026-02-13",
+        "stitches": 195
+      },
+      {
+        "id": "YWHhLM7vKtVvN3xaBQJR",
+        "sessionDate": "2026-04-01",
+        "stitches": 395
+      },
+      {
+        "id": "bGoE7R0ByvbVqwFp1eav",
+        "sessionDate": "2026-03-01",
+        "stitches": 381
+      },
+      {
+        "id": "berze27p4GFAYnrrT9oE",
+        "sessionDate": "2026-02-17",
+        "stitches": 138
+      },
+      {
+        "id": "cSsJykMePpzntVfuq0WG",
+        "sessionDate": "2026-02-15",
+        "stitches": 88
+      },
+      {
+        "id": "caYijncb263HJe4nRUta",
+        "sessionDate": "2026-03-22",
+        "stitches": 203
+      },
+      {
+        "id": "cwVp8eWIEgeJdgsFAv4v",
+        "sessionDate": "2026-04-02",
+        "stitches": 413
+      },
+      {
+        "id": "jkhhtXjUX5XDigWosh8n",
+        "sessionDate": "2026-03-27",
+        "stitches": 215
+      },
+      {
+        "id": "jmTiWS2zBjrNHlyCL8Ye",
+        "sessionDate": "2026-03-11",
+        "stitches": 222
+      },
+      {
+        "id": "lhV3XCsSKAn9UucYnyY9",
+        "sessionDate": "2026-02-07",
+        "stitches": 191
+      },
+      {
+        "id": "m9WZUHKPUUQTOnlMpIkq",
+        "sessionDate": "2026-02-20",
+        "stitches": 224
+      },
+      {
+        "id": "mIMXax64tN2n92rAUv7q",
+        "sessionDate": "2026-02-18",
+        "stitches": 220
+      },
+      {
+        "id": "mNmbPaSREq3v5uKk3HXM",
+        "sessionDate": "2026-02-14",
+        "stitches": 239
+      },
+      {
+        "id": "o6GNP64S7QCxtUIO5EFI",
+        "sessionDate": "2026-02-05",
+        "stitches": 90
+      },
+      {
+        "id": "oLXTsuA1VrwOKnHh189r",
+        "sessionDate": "2026-02-19",
+        "stitches": 83
+      },
+      {
+        "id": "qgXA5UTWPnLkkcvmaMGK",
+        "sessionDate": "2026-03-12",
+        "stitches": 175
+      },
+      {
+        "id": "swwy5x8zBcJaGDjdtB5H",
+        "sessionDate": "2026-03-04",
+        "stitches": 82
+      },
+      {
+        "id": "vaaE2kUw4aIe5tQNahtA",
+        "sessionDate": "2026-02-27",
+        "stitches": 375
+      },
+      {
+        "id": "whzLa12MtcEwfZ4TnCZz",
+        "sessionDate": "2026-04-03",
+        "stitches": 399.5
+      },
+      {
+        "id": "y7VPIYndUr9eDy7ta09b",
+        "sessionDate": "2026-02-10",
+        "stitches": 193
+      },
+      {
+        "id": "yuT0HEcfZLhze0gSoYf8",
+        "sessionDate": "2026-03-05",
+        "stitches": 210
+      },
+      {
+        "id": "zXdVit4r03NdKQkaRsjZ",
+        "sessionDate": "2026-02-03",
+        "stitches": 256
+      }
+    ]
+  },
+  {
+    "firebaseId": "Lgfx5xOnpeClEgoozKDZ",
+    "designer": "Выдох",
+    "completedStitches": 1232.5,
+    "title": "Профессионал",
+    "oldId": "4cd3f4dd-938f-4249-b5fe-40dcbdee566e",
+    "imageUrl": "https://optim.tildacdn.com/stor3066-3161-4063-a235-363634323363/-/format/webp/726a239cee269ab9170c859befd68414.jpg.webp",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:31:00.288717+00:00",
+    "totalStitches": 3897.5,
+    "history": [
+      {
+        "id": "CXwkcXBE0l0yZ76EgsKP",
+        "sessionDate": "2026-01-03",
+        "stitches": 192
+      },
+      {
+        "id": "JW3J5trIZvPX4l5IGF1H",
+        "sessionDate": "2026-01-30",
+        "stitches": 96
+      },
+      {
+        "id": "RJwd860d97UxASaO2IYg",
+        "sessionDate": "2026-01-29",
+        "stitches": 100
+      },
+      {
+        "id": "b5c9q2fUmx6VT4LTaWMI",
+        "sessionDate": "2026-02-01",
+        "stitches": 106
+      },
+      {
+        "id": "cLa5jwU73Eq9MJLsIIjd",
+        "sessionDate": "2026-01-31",
+        "stitches": 121.5
+      }
+    ]
+  },
+  {
+    "firebaseId": "Lh5zys1qCYTh2T4rsD0D",
+    "designer": "Vik Dollin",
+    "title": "Настроение весна",
+    "completedStitches": 848,
+    "oldId": "97d8b13e-66a2-4c0d-bdfe-2f16ce3b6a78",
+    "imageUrl": "https://www.stitch.su/images/patterns/big/22759.jpg",
+    "totalStitches": 9122,
+    "createdAt": "2026-05-29T14:44:35.360099+00:00",
+    "status": "Активен",
+    "history": []
+  },
+  {
+    "firebaseId": "LjrGVRGQk2gTJDQNTcLM",
+    "status": "Активен",
+    "createdAt": "2026-05-29T09:57:39.267087+00:00",
+    "totalStitches": 1481.5,
+    "oldId": "6569ed77-dbca-40f6-996d-38ded408ce9f",
+    "imageUrl": "https://vk.com/photo-189365914_457259960?all=1",
+    "completedStitches": 687,
+    "title": "Ваза Чайка",
+    "designer": "",
+    "history": []
+  },
+  {
+    "firebaseId": "MDvAzseCsbO0JLp7jVGb",
+    "title": "Исаакиевский собор",
+    "completedStitches": 2231,
+    "designer": "Риолис",
+    "totalStitches": 30588.5,
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:22:39.739104+00:00",
+    "oldId": "0b1c4136-7475-4ca0-87ca-f8072fe0ea55",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/12390472/2a0000018ea510a06b04b97c8f212138bfe7/orig",
+    "history": []
+  },
+  {
+    "firebaseId": "MECTUK7n2bgClOCa8j8U",
+    "createdAt": "2026-05-29T14:39:38.963399+00:00",
+    "status": "Активен",
+    "totalStitches": 8241,
+    "oldId": "c96d70de-a3de-4874-a785-fb2cbaf26a2d",
+    "imageUrl": "https://goods-photos.static1-sima-land.com/items/7380577/1/1600.jpg?v=1685073285",
+    "title": "Страшила",
+    "completedStitches": 2688,
+    "designer": "Жар-птица",
+    "history": []
+  },
+  {
+    "firebaseId": "N8BKzDW8WgCFZsL232mU",
+    "oldId": "50fd9fa2-814e-4a30-83c6-6df76626b14b",
+    "imageUrl": "https://www.stitch.su/images/big/5202.jpg",
+    "totalStitches": 7075.5,
+    "createdAt": "2026-05-29T14:42:36.756776+00:00",
+    "status": "Активен",
+    "designer": "Amishop",
+    "title": "Снежный домик",
+    "completedStitches": 306,
+    "history": []
+  },
+  {
+    "firebaseId": "NqU2TGNENdl6V9NL0NRu",
+    "designer": "Ольга Антропова",
+    "completedStitches": 1183,
+    "title": "Пингвин",
+    "oldId": "1486201c-0798-4268-b0ef-e156fad2d33d",
+    "imageUrl": "https://basket-35.wbbasket.ru/vol7391/part739105/739105598/images/big/1.webp",
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:44:15.058383+00:00",
+    "totalStitches": 1183,
+    "history": [
+      {
+        "id": "3DKUGC9A6CeFPalDo9qV",
+        "sessionDate": "2026-02-17",
+        "stitches": 158
+      },
+      {
+        "id": "6Yro3zAPHQrYyBR8SHVr",
+        "sessionDate": "2026-02-10",
+        "stitches": 67
+      },
+      {
+        "id": "DFMu6Ccaqe0MbDmMkCnH",
+        "sessionDate": "2026-02-16",
+        "stitches": 78
+      },
+      {
+        "id": "O9rfkEdifjgN7ghj9r7B",
+        "sessionDate": "2026-01-10",
+        "stitches": 221
+      },
+      {
+        "id": "YiWKnMZkLWUs0lyEuqB2",
+        "sessionDate": "2026-02-09",
+        "stitches": 68
+      },
+      {
+        "id": "frHsBZNcWBWpFoSMccds",
+        "sessionDate": "2026-02-18",
+        "stitches": 150
+      },
+      {
+        "id": "rxahpCktYioaWlC378Z8",
+        "sessionDate": "2026-02-19",
+        "stitches": 268
+      },
+      {
+        "id": "wW6lfXI10rm87lcm3O3Q",
+        "sessionDate": "2026-02-07",
+        "stitches": 173
+      }
+    ]
+  },
+  {
+    "firebaseId": "PoYRgdFAouCtE24wtzcV",
+    "title": "Дятел",
+    "completedStitches": 2387.5,
+    "designer": "Я вышиваю",
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:47:03.006904+00:00",
+    "totalStitches": 2387.5,
+    "oldId": "5cc68ac3-b0ed-412c-91c6-a33d44ea87bb",
+    "imageUrl": "https://rst-basket-cdn-06.geobasket.ru/vol9067/part906713/906713430/images/big/1.webp",
+    "history": [
+      {
+        "id": "76HYG01FRN8ueVCDO9cz",
+        "sessionDate": "2026-01-10",
+        "stitches": 195
+      },
+      {
+        "id": "AAKZmRHMH6Jns686FqUN",
+        "sessionDate": "2026-01-21",
+        "stitches": 126
+      },
+      {
+        "id": "D7BssXyI0n1gAL7BVd8w",
+        "sessionDate": "2026-01-22",
+        "stitches": 238.5
+      },
+      {
+        "id": "HEO7t3A59XyPpPa9lOUW",
+        "sessionDate": "2026-01-11",
+        "stitches": 113
+      },
+      {
+        "id": "SToqmjo9KFdBTiBlKg9c",
+        "sessionDate": "2026-01-12",
+        "stitches": 145
+      },
+      {
+        "id": "jPdLoUSAGBIco9N6USOn",
+        "sessionDate": "2026-01-15",
+        "stitches": 140
+      },
+      {
+        "id": "nbQLeYkomd4GSOfsijG0",
+        "sessionDate": "2026-01-01",
+        "stitches": 568
+      },
+      {
+        "id": "qt3Zetcr3y2N4hxLMCWH",
+        "sessionDate": "2026-01-23",
+        "stitches": 245
+      },
+      {
+        "id": "r6Jh4rNYnTUmavTYpxzx",
+        "sessionDate": "2026-01-13",
+        "stitches": 152
+      },
+      {
+        "id": "tR1GKQTOvclKkZBobWcv",
+        "sessionDate": "2026-01-16",
+        "stitches": 172
+      },
+      {
+        "id": "tvaVZoGANjP3PogdWoJT",
+        "sessionDate": "2026-05-14",
+        "stitches": 293
+      }
+    ]
+  },
+  {
+    "firebaseId": "RCrm2vvEW53XKwePw0gr",
+    "designer": "Мир вышивки",
+    "title": "Лунный кот",
+    "completedStitches": 801,
+    "oldId": "33bfd512-8d2d-464a-a380-d5e39dfdb9ad",
+    "imageUrl": "https://basket-17.wbbasket.ru/vol2835/part283599/283599302/images/big/1.webp",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:17:42.130041+00:00",
+    "totalStitches": 18587.5,
+    "history": [
+      {
+        "id": "K2YIjkgqLxVxeupwdrFc",
+        "sessionDate": "2026-01-17",
+        "stitches": 136
+      },
+      {
+        "id": "TgIZrbRZQdU0RwQk8T55",
+        "sessionDate": "2026-01-16",
+        "stitches": 100
+      },
+      {
+        "id": "knKdjKNgvDcQMB3KwVWS",
+        "sessionDate": "2026-01-18",
+        "stitches": 270
+      },
+      {
+        "id": "xtBpLqnc0941LS9iSpPL",
+        "sessionDate": "2026-01-31",
+        "stitches": 230
+      }
+    ]
+  },
+  {
+    "firebaseId": "RDF1EEDdQS4J4qYfhMtu",
+    "title": "Жадная жаба",
+    "completedStitches": 1937,
+    "designer": "Совиный лес",
+    "totalStitches": 3686,
+    "createdAt": "2026-05-29T11:33:33.151088+00:00",
+    "status": "Активен",
+    "oldId": "514902e9-6c2f-4d6c-b8a9-7af0d31b07e8",
+    "imageUrl": "https://owlforest.ru/wa-data/public/shop/products/86/20/2086/images/21224/21224.750@2x.webp",
+    "history": [
+      {
+        "id": "CefdyyN9bBE3PCfAJcpq",
+        "sessionDate": "2026-05-12",
+        "stitches": 209
+      },
+      {
+        "id": "R0oBW2BAf4myAqdk6X3Q",
+        "sessionDate": "2026-04-05",
+        "stitches": 316
+      },
+      {
+        "id": "WFF6tHgX6cRz082bLG3v",
+        "sessionDate": "2026-02-23",
+        "stitches": 230
+      },
+      {
+        "id": "w71zRFeIDASNR5893fkA",
+        "sessionDate": "2026-01-02",
+        "stitches": 306
+      }
+    ]
+  },
+  {
+    "firebaseId": "RIokr7qHoBYzz5AefoWI",
+    "title": "Котик и сирень",
+    "completedStitches": 2201.5,
+    "designer": "",
+    "totalStitches": 2201.5,
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:43:35.89124+00:00",
+    "oldId": "7cc6153d-4e3a-48ae-887f-c038d3c2203f",
+    "imageUrl": "https://ir-8.ozone.ru/s3/multimedia-1-1/wc1000/7518392749.jpg",
+    "history": [
+      {
+        "id": "0WaDaa1BpE8Ep0MMHAX6",
+        "sessionDate": "2026-02-26",
+        "stitches": 61
+      },
+      {
+        "id": "3jdJdzadlCgH5sNm9dJ6",
+        "sessionDate": "2026-03-14",
+        "stitches": 156.5
+      },
+      {
+        "id": "AF9KCosZ5XLErj065n7I",
+        "sessionDate": "2026-03-24",
+        "stitches": 16
+      },
+      {
+        "id": "CJQjs5unaEjh8HX9aYg7",
+        "sessionDate": "2026-03-10",
+        "stitches": 59
+      },
+      {
+        "id": "IVujVB0Qp1JIqiM4APSJ",
+        "sessionDate": "2026-02-24",
+        "stitches": 95
+      },
+      {
+        "id": "KBuXgNZjh4a9VD5JdX66",
+        "sessionDate": "2026-03-09",
+        "stitches": 62
+      },
+      {
+        "id": "L502wVgeLTPjgREaZjj9",
+        "sessionDate": "2026-03-15",
+        "stitches": 90
+      },
+      {
+        "id": "MZGrZmc4BLdQArw7bjwM",
+        "sessionDate": "2026-03-13",
+        "stitches": 192
+      },
+      {
+        "id": "U3B5PswjFgVDNpwwHtdd",
+        "sessionDate": "2026-02-25",
+        "stitches": 60
+      },
+      {
+        "id": "Vp7viAMIEP8ArX1CGaZ6",
+        "sessionDate": "2026-03-28",
+        "stitches": 21.5
+      },
+      {
+        "id": "eDZ6xsSE9JvfPWJ2vPGm",
+        "sessionDate": "2026-03-27",
+        "stitches": 331
+      },
+      {
+        "id": "fxAf5fiSTwVFbCJaLV81",
+        "sessionDate": "2026-03-23",
+        "stitches": 159.5
+      },
+      {
+        "id": "rhlhZQS6TBP0At2REvPs",
+        "sessionDate": "2026-01-16",
+        "stitches": 129
+      }
+    ]
+  },
+  {
+    "firebaseId": "T89H1FyxNiKc7rsjduPN",
+    "oldId": "9373df90-d0fa-4030-8491-3c63b59a7c50",
+    "imageUrl": "https://ir.ozone.ru/s3/multimedia-1-q/wc1000/8905472054.jpg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T09:55:14.734461+00:00",
+    "totalStitches": 2229,
+    "designer": "Vik Dollin \r\n",
+    "completedStitches": 1793,
+    "title": "Часы с кукушкой",
+    "history": []
+  },
+  {
+    "firebaseId": "TjR39yWpkWdQdcpogTEs",
+    "oldId": "fd8cf14c-d552-460c-8806-a63fca1a1bb4",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/b/lb0776ilk09wny2_5a496ff.jpg",
+    "totalStitches": 5922,
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:40:30.517983+00:00",
+    "designer": "Наталья Орехова",
+    "completedStitches": 217,
+    "title": "Ирисы",
+    "history": []
+  },
+  {
+    "firebaseId": "U5NNSZVDk84A5tjToAtm",
+    "oldId": "5eb6243a-e676-40c1-b844-e2b16b8c797a",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/g/s84tcr4vmctbqr4_f592afbb.jpg",
+    "createdAt": "2026-05-29T09:58:41.126608+00:00",
+    "status": "Активен",
+    "totalStitches": 4179,
+    "designer": "Андриана\r\n",
+    "title": "Бабушки на пикнике",
+    "completedStitches": 3526.5,
+    "history": [
+      {
+        "id": "5jkRaS6iV1dNynbwF7fR",
+        "sessionDate": "2026-04-30",
+        "stitches": 335.5
+      },
+      {
+        "id": "7oxL6gI9xQVokkNq7pc5",
+        "sessionDate": "2026-04-27",
+        "stitches": 79
+      },
+      {
+        "id": "84P2pXswGqko2kBYrqMI",
+        "sessionDate": "2026-02-05",
+        "stitches": 211
+      },
+      {
+        "id": "El5k2r1dWkdTPjbvVjbr",
+        "sessionDate": "2026-05-03",
+        "stitches": 199
+      },
+      {
+        "id": "JpnADH79dxUegSestwsq",
+        "sessionDate": "2026-04-22",
+        "stitches": 199.5
+      },
+      {
+        "id": "V45lhoCNCTai26dSfttg",
+        "sessionDate": "2026-05-30",
+        "stitches": 272.5
+      },
+      {
+        "id": "WlWqiWbeNo4TIdIfOrie",
+        "sessionDate": "2026-03-30",
+        "stitches": 93
+      },
+      {
+        "id": "Y0I1SL1UG74Fqr3biVH3",
+        "sessionDate": "2026-04-29",
+        "stitches": 168.5
+      },
+      {
+        "id": "iaJVnoTNPaXJsyLMoPkz",
+        "sessionDate": "2026-01-15",
+        "stitches": 178
+      },
+      {
+        "id": "oSjg1RbmQXNCmSPt6AEV",
+        "sessionDate": "2026-04-23",
+        "stitches": 184
+      },
+      {
+        "id": "sKXqGQoUAZAPgrdD2QRi",
+        "sessionDate": "2026-04-05",
+        "stitches": 143.5
+      },
+      {
+        "id": "yVaaFlRo6Z8PIu6uz2Uv",
+        "sessionDate": "2026-05-31",
+        "stitches": 97
+      },
+      {
+        "id": "yaGYLTCGia3G3JRfbQsr",
+        "sessionDate": "2026-02-04",
+        "stitches": 155.5
+      },
+      {
+        "id": "zRjAv4dPYQfbRiEIvoXu",
+        "sessionDate": "2026-04-26",
+        "stitches": 80
+      }
+    ]
+  },
+  {
+    "firebaseId": "XiqGvGV6pnsQk56NN2bB",
+    "oldId": "96a347ab-32fa-4fd9-951c-2d3177f17f80",
+    "imageUrl": "https://owlforest.ru/wa-data/public/shop/products/89/01/189/images/5558/5558.750@2x.webp",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:10:59.736567+00:00",
+    "totalStitches": 11877,
+    "designer": "Совиный лес",
+    "title": "Изумрудный город",
+    "completedStitches": 1585,
+    "history": []
+  },
+  {
+    "firebaseId": "ZCwmSrw7X6jlMkQKMJve",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:35:01.776427+00:00",
+    "totalStitches": 4927,
+    "oldId": "50affb72-dad1-42f9-b5a8-0f3d67a71cd9",
+    "imageUrl": "https://basket-16.wbbasket.ru/vol2598/part259813/259813162/images/big/1.webp",
+    "title": "Елочный шар. Волшебство ночи",
+    "completedStitches": 1566,
+    "designer": "МП Студия",
+    "history": []
+  },
+  {
+    "firebaseId": "aKo715FvCZo8mOHUTePU",
+    "designer": "Жар-птица",
+    "title": "Сладости для радости",
+    "completedStitches": 768,
+    "imageUrl": "https://static.airis.spb.ru/upload/iblock/81f/7auvc84z9vluzbymhl5ajnn2eb23hebt/612319_06.jpg",
+    "totalStitches": 3908.5,
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:33:24.479117+00:00",
+    "history": []
+  },
+  {
+    "firebaseId": "cAQ01x2CdZw2u76nENIR",
+    "title": "Настенные часы",
+    "completedStitches": 955.5,
+    "designer": "Оксана Ершова",
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:45:37.360662+00:00",
+    "totalStitches": 955.5,
+    "oldId": "7fa0978b-eab9-464d-a3c9-50fa293697f2",
+    "imageUrl": "",
+    "history": [
+      {
+        "id": "5VNUTfaEh4fSNUcduhHb",
+        "sessionDate": "2026-01-20",
+        "stitches": 340.5
+      },
+      {
+        "id": "Iac281O3Wg4UZHn8chK2",
+        "sessionDate": "2026-01-19",
+        "stitches": 235
+      },
+      {
+        "id": "Mohln5RsfEqDngMClK5g",
+        "sessionDate": "2026-01-21",
+        "stitches": 222
+      },
+      {
+        "id": "jW73kBoePXlbpxekC6nZ",
+        "sessionDate": "2026-01-14",
+        "stitches": 158
+      }
+    ]
+  },
+  {
+    "firebaseId": "eUNKNMFN324yIEGE6VtU",
+    "title": "Лиловый рассвет",
+    "completedStitches": 2210,
+    "designer": "Анна Кузнецова",
+    "createdAt": "2026-05-29T15:23:30.201917+00:00",
+    "status": "Активен",
+    "totalStitches": 31192.5,
+    "oldId": "511a9575-053a-4c49-87fb-7ea523222b85",
+    "imageUrl": "https://i0.wp.com/kuznetsovastitch.ru/wp-content/uploads/2022/09/vehkxpy0gak.jpg?w=480&ssl=1",
+    "history": []
+  },
+  {
+    "firebaseId": "ewyM5To7ZCPqvn62978P",
+    "title": "Пристань",
+    "completedStitches": 386.5,
+    "designer": "Риолис",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:25:20.656618+00:00",
+    "totalStitches": 35000,
+    "oldId": "97b396a1-b86e-48cf-bfce-cdba92c04b43",
+    "imageUrl": "https://www.masteriza.com/uploads/product/8900/8939/pristan.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "gKXzygjMEAbozCmY3b1G",
+    "designer": "РТО",
+    "title": "На узкой тропинке",
+    "completedStitches": 281,
+    "oldId": "a78ed60b-4611-446f-9073-0e850a886c25",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=397995aacd91d7d49c41748f4f7b5e60_l-4961046-images-thumbs&n=13",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:19:22.783255+00:00",
+    "totalStitches": 20104,
+    "history": []
+  },
+  {
+    "firebaseId": "hYBm1Qfk6riEXGSChniT",
+    "designer": "Надежда Григорьева",
+    "completedStitches": 387,
+    "title": "Шурф Лонли-Локли",
+    "oldId": "4239488c-9b5f-4d56-9471-3cc6253d4950",
+    "imageUrl": "https://forum.stitch.su/uploads/monthly_2019_08/z3RImczzFA0.jpg.57f5fc635a20fd664b5c29fd32acf331.jpg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:28:28.047716+00:00",
+    "totalStitches": 39479,
+    "history": []
+  },
+  {
+    "firebaseId": "ixa8499zoKOKcwnEb8gQ",
+    "designer": "Amishop",
+    "completedStitches": 459,
+    "title": "Паровозик",
+    "oldId": "7f61288e-4a5b-4dd1-bef9-ccdaeca65647",
+    "imageUrl": "https://ir.ozone.ru/s3/multimedia-1-r/7238410047.jpg",
+    "totalStitches": 2289,
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:05:28.180969+00:00",
+    "history": []
+  },
+  {
+    "firebaseId": "jhrrR0wseYxWEhhyQN8R",
+    "completedStitches": 803.5,
+    "title": "Синицы и сирень",
+    "designer": "Dimensions",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:24:29.737478+00:00",
+    "totalStitches": 31300.5,
+    "oldId": "9ab71648-937b-47e2-8cab-3ff6e630ac05",
+    "imageUrl": "https://images.firma-gamma.ru/images/c/2/g59041007272.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "jswgQZXzOkshPGTCh4z7",
+    "totalStitches": 1030.5,
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:48:30.824143+00:00",
+    "oldId": "f5d2bd14-2ee0-492d-8126-7a673f96a319",
+    "imageUrl": "",
+    "title": "Конь ветра Снежный",
+    "completedStitches": 1030.5,
+    "designer": "Я вышиваю",
+    "history": [
+      {
+        "id": "HVJyj4Po9KZfMcC4NzDf",
+        "sessionDate": "2026-01-25",
+        "stitches": 354
+      },
+      {
+        "id": "LZfhOuUK7JLpVk1cgh5P",
+        "sessionDate": "2026-01-26",
+        "stitches": 225
+      },
+      {
+        "id": "MGlYf3qzVCPVOS7H3QV7",
+        "sessionDate": "2026-01-28",
+        "stitches": 134.5
+      },
+      {
+        "id": "lLWYpFr01oyZsd9TbzrF",
+        "sessionDate": "2026-01-27",
+        "stitches": 317
+      }
+    ]
+  },
+  {
+    "firebaseId": "kwrvCYGcLBfDtj6sIjlV",
+    "title": "Маяк",
+    "completedStitches": 727,
+    "designer": "Екатерина Волкова",
+    "totalStitches": 25968,
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:21:55.111609+00:00",
+    "oldId": "2d5770ac-840e-461a-b4a3-b4771cd88691",
+    "imageUrl": "https://forstitch.ru/wp-content/uploads/2017/10/17%D0%B0.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "lGqmDZBGPLzWUJpIbOrU",
+    "completedStitches": 8890.5,
+    "title": "Пора лететь",
+    "designer": "Ольга Тихомирова",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:43:26.90527+00:00",
+    "totalStitches": 16861.5,
+    "oldId": "d0f422eb-c51e-43b5-b0bc-01a3e5298a6a",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/a/lzd297qige2wxlu_7c63982f.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "lIwTO9tTZzI6lmHCWCXG",
+    "title": "Ирисы",
+    "completedStitches": 2538,
+    "designer": "Совиный лес",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:06:57.546972+00:00",
+    "totalStitches": 4457,
+    "oldId": "9ad77f45-8d36-414f-bd17-553c29e0c62d",
+    "imageUrl": "https://owlforest.ru/wa-data/public/shop/products/07/12/1207/images/20401/20401.750@2x.webp",
+    "history": [
+      {
+        "id": "30ARCcxJk4A1DXmgHomq",
+        "sessionDate": "2026-04-17",
+        "stitches": 88
+      },
+      {
+        "id": "90O43YP8WDT6HVHJywUl",
+        "sessionDate": "2026-03-17",
+        "stitches": 131
+      },
+      {
+        "id": "HliXGa6RJrJJOyAHtbrR",
+        "sessionDate": "2026-04-19",
+        "stitches": 226
+      },
+      {
+        "id": "LF8O8U3tiHOFHGksXrHS",
+        "sessionDate": "2026-01-11",
+        "stitches": 334
+      },
+      {
+        "id": "SAkmJA1NWaGnyvwhiNPd",
+        "sessionDate": "2026-03-16",
+        "stitches": 41
+      },
+      {
+        "id": "fGasOrWVMgTeCjWXduCr",
+        "sessionDate": "2026-03-20",
+        "stitches": 84
+      },
+      {
+        "id": "rnFagtvj0xmCQxeZb1g2",
+        "sessionDate": "2026-03-18",
+        "stitches": 89
+      }
+    ]
+  },
+  {
+    "firebaseId": "likV3bODp6JaBVhBeMJk",
+    "oldId": "e2371421-26df-46fd-a5b7-2d03f901d092",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_1500x1500/a/ogza1gp8mairsf3_ba75f9b.jpg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:15:13.075787+00:00",
+    "totalStitches": 18004,
+    "designer": "Надежда Казарина",
+    "title": "Чайный дракончик",
+    "completedStitches": 1691,
+    "history": []
+  },
+  {
+    "firebaseId": "mVtAebTV0PwR0W37NV8Y",
+    "oldId": "5cb6b593-b38a-471f-87bc-75bb01b27d97",
+    "imageUrl": "https://main-cdn.sbermegamarket.ru/big2/hlr-system/151/374/609/322/107/600010697877b2.jpeg",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:12:33.133713+00:00",
+    "totalStitches": 16209,
+    "designer": "Панна",
+    "title": "Домик в лесу",
+    "completedStitches": 1048,
+    "history": []
+  },
+  {
+    "firebaseId": "pd6CyNYw9mtViKZTxPaq",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:29:10.938167+00:00",
+    "totalStitches": 59319,
+    "oldId": "11cf420c-7019-4823-b1ec-dbcfc588ff0b",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/h/vptoj09livlxnuw_e1be3d79.jpg",
+    "title": "Рождественская доставка",
+    "completedStitches": 1856,
+    "designer": "Letistich",
+    "history": []
+  },
+  {
+    "firebaseId": "rQKzCa4nxOFvEsq59qwm",
+    "title": "Безмятежность",
+    "completedStitches": 855,
+    "designer": "Мережка",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:27:50.536677+00:00",
+    "totalStitches": 38582.5,
+    "oldId": "90591200-914d-4c76-9bee-09479c58d897",
+    "imageUrl": "https://i.ebayimg.com/images/g/Nd4AAOSwuLBjNXzr/s-l1600.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "sIhI3liCB44E0XfrRWl3",
+    "completedStitches": 213,
+    "title": "Суккуленты",
+    "designer": "Алиса Окнеас",
+    "status": "Активен",
+    "createdAt": "2026-05-29T14:36:27.540336+00:00",
+    "totalStitches": 5409.5,
+    "oldId": "f652bd19-3b79-4065-94fb-766eb5ed9df2",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/f/s0xqjl5mr0jl859_96f4857b.jpg",
+    "history": []
+  },
+  {
+    "firebaseId": "unLsUIUXtNgkwATM4laM",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:14:08.007541+00:00",
+    "totalStitches": 17260,
+    "oldId": "bd73b6a8-9410-41ca-b836-33ceacccf8d0",
+    "imageUrl": "https://www.masteriza.com/uploads/product/8000/8075/grozdi_spelogo_vinograda.jpg",
+    "completedStitches": 1141,
+    "title": "Грозди спелого винограда",
+    "designer": "Панна",
+    "history": []
+  },
+  {
+    "firebaseId": "vQWJcalMXgj5JWReBIZP",
+    "completedStitches": 4917,
+    "title": "Нарядная змейка",
+    "designer": "Жар-птица\r\n",
+    "totalStitches": 6301.5,
+    "status": "Активен",
+    "createdAt": "2026-05-29T11:13:20.799117+00:00",
+    "oldId": "e7639e54-846e-475c-a0c8-cdef65c79714",
+    "imageUrl": "https://avatars.mds.yandex.net/get-mpic/4012265/2a000001911e42034b0e6d45b4900eefb5c3/orig",
+    "history": []
+  },
+  {
+    "firebaseId": "x0fRPqxJqBmekAwhhUX4",
+    "title": "Огненная лошадь",
+    "completedStitches": 4316.5,
+    "designer": "Жар-птица",
+    "totalStitches": 4316.5,
+    "status": "Завершён",
+    "createdAt": "2026-05-29T15:46:23.864177+00:00",
+    "oldId": "5708f98f-c38f-4145-8ff5-317d183cd92f",
+    "imageUrl": "https://avatars.mds.yandex.net/i?id=418ac55773ffec1528279fb2babb33d8eb36b086-12714867-images-thumbs&n=13",
+    "history": [
+      {
+        "id": "LHuDx6qFnEY4VlPHx5uJ",
+        "sessionDate": "2026-01-03",
+        "stitches": 223
+      },
+      {
+        "id": "ewPOefECNKco97Gu11q5",
+        "sessionDate": "2026-01-04",
+        "stitches": 541
+      },
+      {
+        "id": "fllVfMccMvqK2fGIeItB",
+        "sessionDate": "2026-01-05",
+        "stitches": 697
+      },
+      {
+        "id": "iJ8pVZgBOnFTBYxQ6sit",
+        "sessionDate": "2026-01-09",
+        "stitches": 369
+      },
+      {
+        "id": "oQaDbqG1L4QnjPcCH1gX",
+        "sessionDate": "2026-01-06",
+        "stitches": 556
+      },
+      {
+        "id": "tsC7l5rRWcndKefrjpAT",
+        "sessionDate": "2026-01-08",
+        "stitches": 510.5
+      },
+      {
+        "id": "vr0IXI3ODvO5iDig773s",
+        "sessionDate": "2026-01-07",
+        "stitches": 535
+      }
+    ]
+  },
+  {
+    "firebaseId": "yxrvHPkn7rJsjOgD9Cnb",
+    "status": "Активен",
+    "createdAt": "2026-05-29T15:20:59.910522+00:00",
+    "totalStitches": 37644.5,
+    "oldId": "ee9e0518-3251-49d3-bc91-8f6200eaea0e",
+    "imageUrl": "https://i.pinimg.com/736x/43/f1/e1/43f1e1b0ee590891009941bc95c951df.jpg",
+    "completedStitches": 12482,
+    "title": "Чеширский кот",
+    "designer": "Надежда Казарина",
+    "history": []
+  },
+  {
+    "firebaseId": "zp0dsgYZuqyiOzsX4t7M",
+    "createdAt": "2026-05-29T15:08:52.629341+00:00",
+    "status": "Активен",
+    "totalStitches": 9374,
+    "oldId": "3ddb84ba-3fa8-43be-b304-90f015e94429",
+    "imageUrl": "https://mybobbin.ru/storage/photo/resized/xy_484x600/a/u3bjpdw3b9flaow_8b3c1afe.jpg",
+    "title": "Дорога в осень",
+    "completedStitches": 472,
+    "designer": "Алиса Окнеас",
+    "history": []
+  }
+]
