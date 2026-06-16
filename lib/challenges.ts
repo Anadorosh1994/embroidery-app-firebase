@@ -1,10 +1,12 @@
 export type Challenge = {
-    type: string
-    title: string
-    processId: string
-    processTitle: string
-    target: number
-  }
+  type: string
+  title: string
+  processId: string
+  processTitle: string
+  target: number
+  progress: number
+  completed: boolean
+}
   
   type Process = {
     id: string
@@ -99,6 +101,8 @@ export type Challenge = {
           randomProcess.title,
   
         target,
+        progress: 0,
+completed: false,
       }
     }
   
@@ -129,6 +133,8 @@ export type Challenge = {
           oldestProcess.title,
   
         target,
+        progress: 0,
+completed: false,
       }
     }
   
@@ -165,6 +171,7 @@ export type Challenge = {
       processTitle:
         processWithLeastRemaining.title,
   
-      target,
+      target,progress: 0,
+      completed: false,
     }
   }

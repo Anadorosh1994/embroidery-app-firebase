@@ -12,6 +12,7 @@ import {
   addDoc,
   updateDoc,
   doc,
+  getDoc,
   deleteDoc,
   orderBy
 } from 'firebase/firestore'
@@ -402,14 +403,61 @@ const [historyTitle, setHistoryTitle] =
           stitches: amount,
         }
       )
-  
+      const user =
+      auth.currentUser
+    
+    if (user) {
+    
+      const challengeRef =
+        doc(
+          db,
+          'currentChallenges',
+          user.uid
+        )
+    
+      const challengeDoc =
+        await getDoc(
+          challengeRef
+        )
+    
+      if (
+        challengeDoc.exists()
+      ) {
+    
+        const challenge =
+          challengeDoc.data()
+    
+        if (
+          !challenge.completed &&
+          challenge.processId ===
+            processId
+        ) {
+    
+          const newProgress =
+            challenge.progress +
+            amount
+    
+          await updateDoc(
+            challengeRef,
+            {
+              progress:
+                Math.min(
+                  newProgress,
+                  challenge.target
+                ),
+    
+              completed:
+                newProgress >=
+                challenge.target
+            }
+          )
+        }
+      }
+    }
       setProcessInput({
         ...processInput,
         [processId]: {},
       })
-  
-      const user =
-        auth.currentUser
   
       if (user) {
         await fetchProcessesFirebase(
@@ -423,6 +471,7 @@ const [historyTitle, setHistoryTitle] =
         'Ошибка сохранения прогресса'
       )
     }
+    
   }
 
   function resetForm() {
