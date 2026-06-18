@@ -1,10 +1,19 @@
 export type Challenge = {
   type: string
+
   title: string
+
+  typeLabel: string
+
+  description: string
+
   processId: string
   processTitle: string
+
   target: number
+
   progress: number
+
   completed: boolean
 }
   
@@ -88,22 +97,30 @@ export type Challenge = {
           )
         ]
   
-      return {
-        type: 'random_process',
-  
-        title:
-          `Вышей ${target} крестиков в процессе "${randomProcess.title}"`,
-  
-        processId:
-          randomProcess.id,
-  
-        processTitle:
-          randomProcess.title,
-  
-        target,
-        progress: 0,
-completed: false,
-      }
+        return {
+          type: 'random_process',
+        
+          title:
+            `Вышей ${target} крестиков в процессе "${randomProcess.title}"`,
+        
+          typeLabel:
+            'Случайный процесс',
+        
+          description:
+            `Вышей ${target} крестиков`,
+        
+          processId:
+            randomProcess.id,
+        
+          processTitle:
+            randomProcess.title,
+        
+          target,
+        
+          progress: 0,
+        
+          completed: false,
+        }
     }
   
     if (
@@ -120,22 +137,29 @@ completed: false,
                 )
           )[0]
   
-      return {
-        type: 'oldest_process',
-  
-        title:
-          `Поработай над самым старым процессом "${oldestProcess.title}" и вышей ${target} крестиков`,
-  
-        processId:
-          oldestProcess.id,
-  
-        processTitle:
-          oldestProcess.title,
-  
-        target,
-        progress: 0,
-completed: false,
-      }
+          return {
+            type: 'oldest_process',
+          
+            title:
+              `Поработай над самым старым процессом "${oldestProcess.title}" и вышей ${target} крестиков`,
+          
+            typeLabel:
+              'Самый старый процесс',
+          
+            description:
+              `Вышей ${target} крестиков`,
+          
+            processId:
+              oldestProcess.id,
+          
+            processTitle:
+              oldestProcess.title,
+          
+            target,
+          
+            progress: 0,
+            completed: false,
+          }
     }
   
     const processWithLeastRemaining =
@@ -161,9 +185,13 @@ completed: false,
     return {
       type:
         'smallest_remaining',
-  
-      title:
-        `Вышей ${target} крестиков в процессе "${processWithLeastRemaining.title}" с минимальным остатком`,
+  title:
+  `Вышей ${target} крестиков в процессе "${processWithLeastRemaining.title}" с минимальным остатком`,
+        typeLabel:
+        'Минимальный остаток',
+      
+      description:
+        `Вышей ${target} крестиков`,
   
       processId:
         processWithLeastRemaining.id,
