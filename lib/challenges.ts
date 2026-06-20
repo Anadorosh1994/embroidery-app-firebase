@@ -49,19 +49,7 @@ export type Challenge = {
       return null
     }
   
-    const challengeTypes = [
-      'random_process',
-      'oldest_process',
-      'smallest_remaining',
-    ]
-  
-    const challengeType =
-      challengeTypes[
-        Math.floor(
-          Math.random() *
-          challengeTypes.length
-        )
-      ]
+    
   
     const target =
       stitchTargets[
@@ -79,6 +67,45 @@ export type Challenge = {
         process.completedStitches
       ) >= target
   )
+  const finishableProcesses =
+  processes.filter((process) => {
+
+    const remaining =
+      process.totalStitches -
+      process.completedStitches
+
+    return remaining > 0 && remaining <= 200
+  })
+  const challengeTypes = [
+    'random_process',
+    'oldest_process',
+    'smallest_remaining',
+  ]
+  challengeTypes.push(
+    'inactive_process'
+  )
+
+  challengeTypes.push(
+    'largest_process'
+  )
+
+  challengeTypes.push(
+    'smallest_process'
+  )
+  
+  if (finishableProcesses.length > 0) {
+    challengeTypes.push(
+      'finish_process'
+    )
+  }
+
+  const challengeType =
+    challengeTypes[
+      Math.floor(
+        Math.random() *
+        challengeTypes.length
+      )
+    ]
   
     if (
       challengeType ===
@@ -161,7 +188,251 @@ export type Challenge = {
             completed: false,
           }
     }
+
+    if (
+      challengeType ===
+      'inactive_process'
+    ) {
+
+      const inactiveProcess =
+  [...processes]
+    .sort(
+      (a, b) =>
+        (a.lastActivityDate || '')
+          .localeCompare(
+            b.lastActivityDate || ''
+          )
+    )[0]
+
+    const target =
+  stitchTargets[
+    Math.floor(
+      Math.random() *
+      stitchTargets.length
+    )
+  ]
+
+  const descriptions = [
+    `Ты давно не вышивала этот процесс. Время к нему вернуться.`,
+    `Этот процесс скучает без внимания.`,
+    `Дай работе ещё немного любви и сделай ${target} крестиков.`,
+    `Пора стряхнуть пыль с этого процесса.`,
+  ]
+
+  const description =
+  descriptions[
+    Math.floor(
+      Math.random() *
+      descriptions.length
+    )
+  ]
+
+  return {
+    type:
+      'inactive_process',
   
+    title:
+      `Вернись к процессу "${inactiveProcess.title}"`,
+  
+    typeLabel:
+      'Давно не вышивали',
+  
+    description,
+  
+    processId:
+      inactiveProcess.id,
+  
+    processTitle:
+      inactiveProcess.title,
+  
+    target,
+  
+    progress: 0,
+  
+    completed: false,
+  }
+}
+
+if (
+  challengeType ===
+  'largest_process'
+) {
+
+  const largestProcess =
+  [...processes]
+    .sort(
+      (a, b) =>
+        b.totalStitches -
+        a.totalStitches
+    )[0]
+
+    const descriptions = [
+
+      `Большие проекты тоже требуют внимания. Вышей ${target} крестиков.`,
+    
+      `Даже огромные картины создаются по одному крестику. Сделай ещё ${target}.`,
+    
+      `Пора уделить внимание самому масштабному процессу.`,
+    
+      `Этот большой проект обязательно станет шедевром. Добавь ещё ${target} крестиков.`
+    
+    ]
+
+    const description =
+  descriptions[
+    Math.floor(
+      Math.random() *
+      descriptions.length
+    )
+  ]
+
+  return {
+
+    type:
+      'largest_process',
+  
+    title:
+      `Поработай над процессом "${largestProcess.title}"`,
+  
+    typeLabel:
+      'Самый большой процесс',
+  
+    description,
+  
+    processId:
+      largestProcess.id,
+  
+    processTitle:
+      largestProcess.title,
+  
+    target,
+  
+    progress: 0,
+  
+    completed: false,
+  }
+}
+
+if (
+  challengeType ===
+  'smallest_process'
+) {
+  const smallestProcess =
+  [...processes]
+    .sort(
+      (a, b) =>
+        a.totalStitches -
+        b.totalStitches
+    )[0]
+
+    const descriptions = [
+
+      `Небольшие проекты тоже заслуживают внимания. Вышей ${target} крестиков.`,
+    
+      `Маленькие работы могут принести большое удовольствие.`,
+    
+      `Пора уделить внимание самому компактному процессу.`,
+    
+      `Небольшие проекты часто завершаются быстрее, чем кажется.`
+    
+    ]
+
+    const description =
+  descriptions[
+    Math.floor(
+      Math.random() *
+      descriptions.length
+    )
+  ]
+
+  return {
+
+    type:
+      'smallest_process',
+  
+    title:
+      `Поработай над процессом "${smallestProcess.title}"`,
+  
+    typeLabel:
+      'Самый маленький процесс',
+  
+    description,
+  
+    processId:
+      smallestProcess.id,
+  
+    processTitle:
+      smallestProcess.title,
+  
+    target,
+  
+    progress: 0,
+  
+    completed: false,
+  }
+}
+
+  
+
+    if (
+      challengeType ===
+      'finish_process'
+    ) {
+    
+      const finishProcess =
+        finishableProcesses[
+          Math.floor(
+            Math.random() *
+            finishableProcesses.length
+          )
+        ]
+    
+      const remaining =
+        finishProcess.totalStitches -
+        finishProcess.completedStitches
+
+        const descriptions = [
+          `До завершения осталось всего ${remaining} крестиков. Доведи работу до финиша!`,
+          `Финиш уже близко — осталось ${remaining} крестиков.`,
+          `Последний рывок! Осталось вышить ${remaining} крестиков.`,
+          `Этому процессу не хватает всего ${remaining} крестиков до завершения.`,
+        ]
+
+        const description =
+  descriptions[
+    Math.floor(
+      Math.random() *
+      descriptions.length
+    )
+  ]
+    
+      return {
+        type:
+          'finish_process',
+    
+        title:
+          `Заверши процесс "${finishProcess.title}"`,
+    
+        typeLabel:
+          'Финишная прямая',
+    
+          description:
+          description,
+    
+        processId:
+          finishProcess.id,
+    
+        processTitle:
+          finishProcess.title,
+    
+        target:
+          remaining,
+    
+        progress: 0,
+    
+        completed: false,
+      }
+    }
     const processWithLeastRemaining =
   [
     ...(
