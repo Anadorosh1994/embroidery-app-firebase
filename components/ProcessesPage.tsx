@@ -404,56 +404,110 @@ const [historyTitle, setHistoryTitle] =
         }
       )
       const user =
-      auth.currentUser
-    
-    if (user) {
-    
-      const challengeRef =
-        doc(
-          db,
-          'currentChallenges',
-          user.uid
-        )
-    
-      const challengeDoc =
-        await getDoc(
-          challengeRef
-        )
-    
-      if (
-        challengeDoc.exists()
-      ) {
-    
-        const challenge =
-          challengeDoc.data()
-    
-        if (
-          !challenge.completed &&
-          challenge.processId ===
-            processId
-        ) {
-    
-          const newProgress =
-            challenge.progress +
-            amount
-    
-          await updateDoc(
-            challengeRef,
-            {
-              progress:
-                Math.min(
-                  newProgress,
-                  challenge.target
-                ),
-    
-              completed:
-                newProgress >=
-                challenge.target
-            }
-          )
+  auth.currentUser
+
+if (user) {
+
+  const challengeRef =
+    doc(
+      db,
+      'currentChallenges',
+      user.uid
+    )
+
+  const challengeDoc =
+    await getDoc(
+      challengeRef
+    )
+
+  if (
+    challengeDoc.exists()
+  ) {
+
+    const challenge =
+      challengeDoc.data()
+
+    const isSpecialChallenge =
+      challenge.type === 'special'
+
+    const belongsToProcess =
+      challenge.processId ===
+      processId
+
+    if (
+      !challenge.completed &&
+      (
+        isSpecialChallenge ||
+        belongsToProcess
+      )
+    ) {
+
+      const newProgress =
+        challenge.progress +
+        amount
+
+      const isNowCompleted =
+        newProgress >=
+        challenge.target
+
+      await updateDoc(
+        challengeRef,
+        {
+          progress:
+            Math.min(
+              newProgress,
+              challenge.target
+            ),
+
+          completed:
+            isNowCompleted
         }
+      )
+
+      if (
+        isNowCompleted
+      ) {
+
+        await addDoc(
+          collection(
+            db,
+            'users',
+            user.uid,
+            'challengeHistory'
+          ),
+          {
+            challengeId:
+              challenge.id,
+
+            type:
+              challenge.type,
+
+            title:
+              challenge.title,
+
+            typeLabel:
+              challenge.typeLabel,
+
+            description:
+              challenge.description,
+
+            processId:
+              challenge.processId || '',
+
+            processTitle:
+              challenge.processTitle || '',
+
+            target:
+              challenge.target,
+
+            completedAt:
+              new Date().toISOString()
+          }
+        )
       }
     }
+  }
+}
       setProcessInput({
         ...processInput,
         [processId]: {},

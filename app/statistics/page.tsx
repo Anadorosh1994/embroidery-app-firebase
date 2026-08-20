@@ -71,9 +71,18 @@ const [selectedYear, setSelectedYear] =
 const processMap:
   Record<string, string> = {};
 
+  const processCompletedStitches:
+  Record<string, number> = {}
+
   const finished: string[] = []
 
-  const started: string[] = []
+const started: string[] = []
+
+const firstStitchDates:
+  Record<string, string> = {}
+
+const historyStitches:
+  Record<string, number> = {}
 
 processesSnapshot.forEach(
   (processDoc) => {
@@ -83,6 +92,13 @@ processesSnapshot.forEach(
     processMap[
       processDoc.id
     ] = data.title;
+
+    processCompletedStitches[
+      processDoc.id
+    ] =
+      Number(
+        data.completedStitches
+      ) || 0
 
     const finishDate =
   data.finishedAt ||
@@ -98,17 +114,7 @@ if (
     data.title
   );
 }
-const createdDate =
-  data.createdAt?.slice(0, 7)
 
-if (
-  createdDate ===
-  selectedPeriod
-) {
-  started.push(
-    data.title
-  )
-}
   }
 );
 
@@ -132,6 +138,30 @@ const activeDaysSet =
   
     const sessionDate =
       data.sessionDate;
+
+      const processId =
+  doc.ref.parent.parent?.id
+
+if (
+  processId &&
+  sessionDate
+) {
+
+  if (
+    !firstStitchDates[processId] ||
+    sessionDate <
+      firstStitchDates[processId]
+  ) {
+    firstStitchDates[processId] =
+      sessionDate
+  }
+}
+
+if (processId) {
+  historyStitches[processId] =
+    (historyStitches[processId] || 0) +
+    stitches
+}
   
     if (sessionDate === today) {
       totalToday += stitches;
@@ -164,6 +194,36 @@ if (
       );
     }
   });
+  Object.entries(
+    firstStitchDates
+  ).forEach(
+    ([processId, firstDate]) => {
+  
+      const totalHistoryStitches =
+        historyStitches[processId] || 0
+  
+      const completedStitches =
+        processCompletedStitches[
+          processId
+        ] || 0
+  
+      const historyContainsAllStitches =
+        totalHistoryStitches ===
+        completedStitches
+  
+      if (
+        historyContainsAllStitches &&
+        firstDate.startsWith(
+          selectedPeriod
+        ) &&
+        processMap[processId]
+      ) {
+        started.push(
+          processMap[processId]
+        )
+      }
+    }
+  )
 
     setTodayStitches(totalToday);
     setMonthStitches(totalMonth);

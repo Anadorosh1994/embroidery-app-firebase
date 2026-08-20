@@ -4,6 +4,8 @@ import {
 } from "./specialChallenges"
 
 export type Challenge = {
+  id: string
+
   type: string
 
   title: string
@@ -88,6 +90,12 @@ export type Challenge = {
   
     return challenges
   }
+
+  function generateChallengeId(): string {
+    return crypto.randomUUID()
+  }
+
+
   export function generateChallenge(
     processes: Process[],
     previousChallengeType?: string,
@@ -97,7 +105,8 @@ export type Challenge = {
     if (processes.length === 0) {
       return null
     }
-  
+    const challengeId =
+    generateChallengeId()
     
   
     const target =
@@ -231,6 +240,8 @@ const challengeType =
         ]
   
         return {
+          id: challengeId,
+        
           type: 'random_process',
         
           title:
@@ -271,6 +282,8 @@ const challengeType =
           )[0]
   
           return {
+            id: challengeId,
+          
             type: 'oldest_process',
           
             title:
@@ -334,6 +347,8 @@ const challengeType =
   ]
 
   return {
+    id: challengeId,
+  
     type:
       'inactive_process',
   
@@ -393,7 +408,8 @@ if (
   ]
 
   return {
-
+    id: challengeId,
+  
     type:
       'largest_process',
   
@@ -452,7 +468,8 @@ if (
   ]
 
   return {
-
+    id: challengeId,
+  
     type:
       'smallest_process',
   
@@ -495,8 +512,10 @@ const special =
   ]
 
   return {
+    id: challengeId,
+  
     type: 'special',
-
+  
     title: special.title,
 
     typeLabel: special.typeLabel,
@@ -551,9 +570,11 @@ const special =
     )
   ]
     
-      return {
-        type:
-          'finish_process',
+  return {
+    id: challengeId,
+  
+    type:
+      'finish_process',
     
         title:
           `Заверши процесс "${finishProcess.title}"`,
@@ -598,9 +619,11 @@ const special =
             )
         )[0]
   
-    return {
-      type:
-        'smallest_remaining',
+        return {
+          id: challengeId,
+        
+          type:
+            'smallest_remaining',
   title:
   `Вышей ${target} крестиков в процессе "${processWithLeastRemaining.title}" с минимальным остатком`,
         typeLabel:
