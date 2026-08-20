@@ -1,3 +1,8 @@
+import {
+  genericSpecialChallenges,
+  autumnSpecialChallenges,
+} from "./specialChallenges"
+
 export type Challenge = {
   type: string
 
@@ -40,9 +45,53 @@ export type Challenge = {
     300
   ]
 
+  
+  function getProcessesWithoutPrevious(
+    processes: Process[],
+    previousProcessId?: string
+  ): Process[] {
+  
+    if (!previousProcessId) {
+      return processes
+    }
+  
+    const filteredProcesses =
+      processes.filter(
+        process =>
+          process.id !==
+          previousProcessId
+      )
+  
+    return filteredProcesses.length > 0
+      ? filteredProcesses
+      : processes
+  }
+  function getAvailableSpecialChallenges() {
 
+    const month =
+      new Date().getMonth() + 1
+  
+    let challenges = [
+      ...genericSpecialChallenges,
+    ]
+  
+    if (
+      month === 9 ||
+      month === 10 ||
+      month === 11
+    ) {
+      challenges = [
+        ...challenges,
+        ...autumnSpecialChallenges,
+      ]
+    }
+  
+    return challenges
+  }
   export function generateChallenge(
-    processes: Process[]
+    processes: Process[],
+    previousChallengeType?: string,
+    previousProcessId?: string
   ): Challenge | null {
   
     if (processes.length === 0) {
@@ -77,44 +126,101 @@ export type Challenge = {
     return remaining > 0 && remaining <= 200
   })
   const challengeTypes = [
-    'random_process',
-    'oldest_process',
-    'smallest_remaining',
+    {
+      type: 'random_process',
+      weight: 30,
+    },
+    {
+      type: 'oldest_process',
+      weight: 10,
+    },
+    {
+      type: 'inactive_process',
+      weight: 10,
+    },
+    {
+      type: 'smallest_remaining',
+      weight: 10,
+    },
+    {
+      type: 'smallest_process',
+      weight: 5,
+    },
+    {
+      type: 'largest_process',
+      weight: 5,
+    },
   ]
-  challengeTypes.push(
-    'inactive_process'
-  )
-
-  challengeTypes.push(
-    'largest_process'
-  )
-
-  challengeTypes.push(
-    'smallest_process'
-  )
   
   if (finishableProcesses.length > 0) {
-    challengeTypes.push(
-      'finish_process'
-    )
+    challengeTypes.push({
+      type: 'finish_process',
+      weight: 10,
+    })
   }
+  
+  challengeTypes.push({
+    type: 'special',
+    weight: 15,
+  })
 
-  const challengeType =
-    challengeTypes[
-      Math.floor(
-        Math.random() *
-        challengeTypes.length
-      )
-    ]
+  
+
+  let availableChallengeTypes =
+  challengeTypes
+
+if (previousChallengeType) {
+  availableChallengeTypes =
+    challengeTypes.filter(
+      challenge =>
+        challenge.type !==
+        previousChallengeType
+    )
+}
+
+const totalWeight =
+  availableChallengeTypes.reduce(
+    (sum, challenge) =>
+      sum + challenge.weight,
+    0
+  )
+
+let random =
+  Math.random() * totalWeight
+
+let selectedChallengeType =
+  availableChallengeTypes[
+    availableChallengeTypes.length - 1
+  ].type
+
+for (
+  const challenge of
+    availableChallengeTypes
+) {
+  random -= challenge.weight
+
+  if (random <= 0) {
+    selectedChallengeType =
+      challenge.type
+
+    break
+  }
+}
+
+const challengeType =
+  selectedChallengeType
   
     if (
       challengeType ===
       'random_process'
     ) {
-        const sourceProcesses =
+      const sourceProcesses =
+      getProcessesWithoutPrevious(
         eligibleProcesses.length > 0
           ? eligibleProcesses
-          : processes
+          : processes,
+        previousProcessId
+      )
       
       const randomProcess =
         sourceProcesses[
@@ -372,7 +478,46 @@ if (
   }
 }
 
-  
+if (
+  challengeType ===
+  'special'
+) {
+
+  const availableSpecialChallenges =
+  getAvailableSpecialChallenges()
+
+const special =
+  availableSpecialChallenges[
+    Math.floor(
+      Math.random() *
+      availableSpecialChallenges.length
+    )
+  ]
+
+  return {
+    type: 'special',
+
+    title: special.title,
+
+    typeLabel: special.typeLabel,
+
+    description:
+      special.description.replace(
+        "{target}",
+        String(special.target)
+      ),
+
+    processId: "",
+
+    processTitle: "",
+
+    target: special.target,
+
+    progress: 0,
+
+    completed: false,
+  }
+}
 
     if (
       challengeType ===

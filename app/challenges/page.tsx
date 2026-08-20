@@ -48,9 +48,11 @@ export default function ChallengesPage() {
       }
     
       const newChallenge =
-  generateChallenge(
-    processes
-  )
+      generateChallenge(
+        processes,
+        challenge?.type,
+        challenge?.processId
+      )
 
   if (newChallenge) {
 
@@ -110,8 +112,14 @@ export default function ChallengesPage() {
       const remaining =
         process.totalStitches -
         process.completedStitches
-
-      return remaining > 0
+    
+      return (
+        remaining > 0 &&
+        (
+          process.status === 'Активен' ||
+          process.status === 'Пауза'
+        )
+      )
     })
 
 setProcesses(data)
@@ -281,19 +289,19 @@ setChallenge(
 
   <div className="flex-1">
 
-  <p className="text-xl font-bold">
-  {challenge.processTitle}
+ <p className="text-xl font-bold">
+ {challenge.processTitle || challenge.title}
 </p>
 
 <p
-  className="
-  mt-1
-  text-l
-  text-gray-500
-  italic
+ className="
+ mt-1
+ text-l
+ text-gray-500
+ italic
 "
 >
-  {challenge.typeLabel}
+ {challenge.typeLabel}
 </p>
 
 <p className="mt-2 text-lg">
@@ -382,6 +390,20 @@ setChallenge(
 </button>
 
 )}
+
+<button
+  onClick={handleGenerate}
+  className="
+    mt-4
+    rounded-xl
+    bg-gray-500
+    px-4
+    py-2
+    text-white
+  "
+>
+  🔄 Новое задание (dev)
+</button>
         </div>
       )}
     </div>
