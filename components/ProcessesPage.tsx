@@ -504,8 +504,9 @@ if (user) {
               target:
               challenge.target,
             
-            stitchesCompleted:
-              challenge.stitchesCompleted || 0,
+              stitchesCompleted:
+              (challenge.stitchesCompleted || 0) +
+              amount,
             
             completedAt:
               new Date().toISOString()
