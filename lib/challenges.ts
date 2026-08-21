@@ -21,6 +21,8 @@ export type Challenge = {
 
   progress: number
 
+  stitchesCompleted?: number
+
   completed: boolean
 }
   

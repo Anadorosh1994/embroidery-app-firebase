@@ -450,19 +450,23 @@ if (user) {
         newProgress >=
         challenge.target
 
-      await updateDoc(
-        challengeRef,
-        {
-          progress:
-            Math.min(
-              newProgress,
-              challenge.target
-            ),
-
-          completed:
-            isNowCompleted
-        }
-      )
+        await updateDoc(
+          challengeRef,
+          {
+            progress:
+              Math.min(
+                newProgress,
+                challenge.target
+              ),
+        
+            stitchesCompleted:
+              (challenge.stitchesCompleted || 0) +
+              amount,
+        
+            completed:
+              isNowCompleted
+          }
+        )
 
       if (
         isNowCompleted
@@ -497,9 +501,12 @@ if (user) {
             processTitle:
               challenge.processTitle || '',
 
-            target:
+              target:
               challenge.target,
-
+            
+            stitchesCompleted:
+              challenge.stitchesCompleted || 0,
+            
             completedAt:
               new Date().toISOString()
           }
