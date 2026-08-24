@@ -314,6 +314,8 @@ export function getEarnedAchievementIds(
     target: number
     stitchesCompleted?: number
     completedAt?: string
+    processId?: string
+    finishedProcess?: boolean
   }[]
   ): string[] {
 
