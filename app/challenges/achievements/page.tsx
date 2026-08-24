@@ -34,7 +34,9 @@ type ChallengeHistory = {
     type: string
     target: number
     stitchesCompleted?: number
-    completedAt: string
+    completedAt?: string
+    processId?: string
+    finishedProcess?: boolean
   }
 
 
@@ -158,6 +160,47 @@ setChallengeHistory(
     challengeHistory
   )
 
+  const challengeTypes =
+  Array.from(
+    new Set(
+      challengeHistory
+        .map(
+          (challenge) =>
+            challenge.type
+        )
+        .filter(Boolean)
+    )
+  )
+  const inactiveChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'inactive_process'
+  ).length
+
+const finishChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'finish_process'
+  ).length
+
+const uniqueChallengeProcesses =
+  new Set(
+    challengeHistory
+      .map(
+        (challenge) =>
+          challenge.processId
+      )
+      .filter(Boolean)
+  ).size
+
+const finishedProcessesFromChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.finishedProcess === true
+  ).length
+
 
   const sortedAchievements =
     [...achievements].sort(
@@ -276,6 +319,27 @@ setChallengeHistory(
                     )
                 ).length
 
+                const stitchTargets = [
+                  100,
+                  500,
+                  1000,
+                  5000,
+                  10000,
+                ]
+                
+                const nextStitchTarget =
+                  stitchTargets.find(
+                    (target) =>
+                      target >
+                      achievementProgress.totalStitches
+                  )
+                
+                const stitchesToNextAchievement =
+                  nextStitchTarget !== undefined
+                    ? nextStitchTarget -
+                      achievementProgress.totalStitches
+                    : 0
+
                 
           
               return (
@@ -331,7 +395,85 @@ setChallengeHistory(
                       </span>
                     </p>
                   )}
-          
+          {category.id === 'stitches' &&
+  nextStitchTarget !== undefined && (
+    <p className="mt-1 text-sm text-gray-500">
+      До следующего достижения:{' '}
+      <span className="font-semibold text-gray-700">
+        {stitchesToNextAchievement}
+      </span>
+      {' '}крестиков
+    </p>
+  )}
+
+{category.id === 'variety' && (
+  <p className="mt-1 text-sm text-gray-500">
+    Попробовано разных типов:{' '}
+    <span className="font-semibold text-gray-700">
+      {achievementProgress.uniqueChallengeTypes}
+    </span>
+  </p>
+)}
+
+{category.id === 'variety' && (
+  <p className="mt-1 text-sm text-gray-500">
+    Основных типов:{' '}
+    <span className="font-semibold text-gray-700">
+      {achievementProgress.completedMainChallengeTypes}
+    </span>
+    {' '}из{' '}
+    <span className="font-semibold text-gray-700">
+      7
+    </span>
+  </p>
+)}
+
+
+{category.id === 'variety' && (
+  <p className="mt-1 text-sm text-gray-500">
+    Лучшая серия без повторов:{' '}
+    <span className="font-semibold text-gray-700">
+      {achievementProgress.longestNoRepeatStreak}
+    </span>
+  </p>
+)}
+
+
+
+
+{category.id === 'processes' && (
+  <>
+    <p className="mt-1 text-sm text-gray-500">
+      Заданий «Давно не вышивали»:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.inactiveChallenges}
+      </span>
+    </p>
+
+    <p className="mt-1 text-sm text-gray-500">
+      Заданий «Финишная прямая»:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.finishChallenges}
+      </span>
+    </p>
+
+    <p className="mt-1 text-sm text-gray-500">
+      Разных процессов:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.uniqueChallengeProcesses}
+      </span>
+    </p>
+
+    <p className="mt-1 text-sm text-gray-500">
+      Завершено через челленджи:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.finishedProcessesFromChallenges}
+      </span>
+    </p>
+  </>
+)}
+
+
                     </div>
           
                   </div>

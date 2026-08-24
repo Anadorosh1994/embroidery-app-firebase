@@ -309,11 +309,12 @@ export const achievements: Achievement[] = [
 
 
 export function getEarnedAchievementIds(
-    challengeHistory: {
-      type: string
-      target: number
-      stitchesCompleted?: number
-    }[]
+  challengeHistory: {
+    type: string
+    target: number
+    stitchesCompleted?: number
+    completedAt?: string
+  }[]
   ): string[] {
 
   const earned: string[] = []
@@ -350,6 +351,140 @@ export function getEarnedAchievementIds(
     earned.push('challenge_legend')
   }
 
+  const uniqueChallengeTypes =
+  new Set(
+    challengeHistory
+      .map(
+        (challenge) =>
+          challenge.type
+      )
+      .filter(Boolean)
+  ).size
+
+  const inactiveChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'inactive_process'
+  ).length
+
+const finishChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'finish_process'
+  ).length
+
+const uniqueChallengeProcesses =
+  new Set(
+    challengeHistory
+      .map(
+        (challenge) =>
+          challenge.processId
+      )
+      .filter(Boolean)
+  ).size
+
+const finishedProcessesFromChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.finishedProcess === true
+  ).length
+
+  const sortedHistory =
+  [...challengeHistory]
+    .filter(
+      (challenge) =>
+        challenge.completedAt
+    )
+    .sort(
+      (a, b) =>
+        new Date(
+          a.completedAt!
+        ).getTime() -
+        new Date(
+          b.completedAt!
+        ).getTime()
+    )
+
+let currentNoRepeatStreak = 0
+let longestNoRepeatStreak = 0
+let previousType: string | undefined
+
+for (
+  const challenge of sortedHistory
+) {
+
+  if (
+    challenge.type &&
+    challenge.type !== previousType
+  ) {
+    currentNoRepeatStreak += 1
+  } else {
+    currentNoRepeatStreak = 1
+  }
+
+  longestNoRepeatStreak =
+    Math.max(
+      longestNoRepeatStreak,
+      currentNoRepeatStreak
+    )
+
+  previousType =
+    challenge.type
+}
+
+
+if (uniqueChallengeTypes >= 5) {
+  earned.push('five_challenge_types')
+}
+
+if (longestNoRepeatStreak >= 10) {
+  earned.push('no_same_type_twice')
+}
+const mainChallengeTypes = [
+  'random_process',
+  'oldest_process',
+  'inactive_process',
+  'smallest_remaining',
+  'smallest_process',
+  'largest_process',
+  'finish_process',
+]
+
+const completedMainChallengeTypes =
+  mainChallengeTypes.filter(
+    (type) =>
+      challengeHistory.some(
+        (challenge) =>
+          challenge.type === type
+      )
+  ).length
+
+  if (
+    completedMainChallengeTypes >=
+    mainChallengeTypes.length
+  ) {
+    earned.push(
+      'all_main_challenge_types'
+    )
+  }
+
+  if (inactiveChallenges >= 3) {
+    earned.push('return_to_process')
+  }
+  
+  if (finishChallenges >= 3) {
+    earned.push('finish_line')
+  }
+  
+  if (uniqueChallengeProcesses >= 5) {
+    earned.push('cleaning_up')
+  }
+  
+  if (finishedProcessesFromChallenges >= 3) {
+    earned.push('finisher')
+  }
 
   if (totalStitches >= 100) {
     earned.push('first_hundred_stitches')
@@ -376,11 +511,14 @@ export function getEarnedAchievementIds(
 }
 
 export function getAchievementProgress(
-    challengeHistory: {
-      type: string
-      target: number
-      stitchesCompleted?: number
-    }[]
+  challengeHistory: {
+    type: string
+    target: number
+    stitchesCompleted?: number
+    completedAt?: string
+    processId?: string
+    finishedProcess?: boolean
+  }[]
   ) {
   
     const completedChallenges =
@@ -393,9 +531,118 @@ export function getAchievementProgress(
           (challenge.stitchesCompleted || 0),
         0
       )
+
+      const uniqueChallengeTypes =
+  new Set(
+    challengeHistory
+      .map(
+        (challenge) =>
+          challenge.type
+      )
+      .filter(Boolean)
+  ).size
+
   
-    return {
-      completedChallenges,
-      totalStitches,
+  const mainChallengeTypes = [
+    'random_process',
+    'oldest_process',
+    'inactive_process',
+    'smallest_remaining',
+    'smallest_process',
+    'largest_process',
+    'finish_process',
+  ]
+  
+  const completedMainChallengeTypes =
+    mainChallengeTypes.filter(
+      (type) =>
+        challengeHistory.some(
+          (challenge) =>
+            challenge.type === type
+        )
+    ).length
+
+    const sortedHistory =
+    [...challengeHistory]
+      .filter(
+        (challenge) =>
+          challenge.completedAt
+      )
+      .sort(
+        (a, b) =>
+          new Date(
+            a.completedAt!
+          ).getTime() -
+          new Date(
+            b.completedAt!
+          ).getTime()
+      )
+  
+  let currentNoRepeatStreak = 0
+  let longestNoRepeatStreak = 0
+  let previousType: string | undefined
+  
+  for (
+    const challenge of sortedHistory
+  ) {
+  
+    if (
+      challenge.type &&
+      challenge.type !== previousType
+    ) {
+      currentNoRepeatStreak += 1
+    } else {
+      currentNoRepeatStreak = 1
     }
+  
+    longestNoRepeatStreak =
+      Math.max(
+        longestNoRepeatStreak,
+        currentNoRepeatStreak
+      )
+  
+    previousType =
+      challenge.type
+  }
+  const inactiveChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'inactive_process'
+  ).length
+
+const finishChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type ===
+      'finish_process'
+  ).length
+
+const uniqueChallengeProcesses =
+  new Set(
+    challengeHistory
+      .map(
+        (challenge) =>
+          challenge.processId
+      )
+      .filter(Boolean)
+  ).size
+
+const finishedProcessesFromChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.finishedProcess === true
+  ).length
+  
+  return {
+    completedChallenges,
+    totalStitches,
+    uniqueChallengeTypes,
+    completedMainChallengeTypes,
+    longestNoRepeatStreak,
+    inactiveChallenges,
+    finishChallenges,
+    uniqueChallengeProcesses,
+    finishedProcessesFromChallenges,
+  }
   }

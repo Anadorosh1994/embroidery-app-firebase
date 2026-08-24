@@ -472,6 +472,14 @@ if (user) {
         isNowCompleted
       ) {
 
+        const historyProcessId =
+        challenge.processId ||
+        processId
+      
+      const historyProcessTitle =
+        challenge.processTitle ||
+        process.title
+
         await addDoc(
           collection(
             db,
@@ -482,32 +490,36 @@ if (user) {
           {
             challengeId:
               challenge.id,
-
+          
             type:
               challenge.type,
-
+          
             title:
               challenge.title,
-
+          
             typeLabel:
               challenge.typeLabel,
-
+          
             description:
               challenge.description,
-
-            processId:
-              challenge.processId || '',
-
-            processTitle:
-              challenge.processTitle || '',
-
-              target:
-              challenge.target,
+          
+              processId:
+              historyProcessId,
             
-              stitchesCompleted:
+            processTitle:
+              historyProcessTitle,
+          
+            target:
+              challenge.target,
+          
+            stitchesCompleted:
               (challenge.stitchesCompleted || 0) +
               amount,
-            
+          
+            finishedProcess:
+              newStatus === 'Завершён' &&
+              isNowCompleted,
+          
             completedAt:
               new Date().toISOString()
           }
