@@ -58,8 +58,13 @@ export default function ChallengesPage() {
     const [challengeHistory, setChallengeHistory] =
   useState<ChallengeHistory[]>([])
 
-  const [earnedAchievementIds, setEarnedAchievementIds] =
-  useState<string[]>([])
+  const [earnedAchievements, setEarnedAchievements] =
+  useState<
+    {
+      achievementId: string
+      earnedAt: string
+    }[]
+  >([])
 
     const handleGenerate = () => {
       if (
@@ -250,18 +255,22 @@ setProcesses(data)
           achievementsRef
         )
   
-      const ids =
+        const data =
         snapshot.docs.map(
-          (doc) => doc.id
+          (doc) => ({
+            achievementId: doc.id,
+            earnedAt:
+              doc.data().earnedAt || '',
+          })
         )
-  
-      setEarnedAchievementIds(
-        ids
+      
+      setEarnedAchievements(
+        data
       )
-
+      
       console.log(
         'Загруженные достижения:',
-        ids
+        data
       )
   
     } catch (error) {
@@ -380,6 +389,23 @@ setChallenge(
   console.log(
     challengeProcess?.cover_image_url
   )
+
+  const latestEarnedAchievements =
+  [...earnedAchievements]
+    .sort(
+      (a, b) =>
+        new Date(b.earnedAt).getTime() -
+        new Date(a.earnedAt).getTime()
+    )
+    .slice(0, 3)
+    .map((item) =>
+      achievements.find(
+        (achievement) =>
+          achievement.id ===
+          item.achievementId
+      )
+    )
+    .filter(Boolean)
 
   return (
     <div className="p-8">
@@ -723,7 +749,7 @@ bg-white
   <p className="mt-3 text-sm text-gray-500">
     Получено{' '}
     <span className="font-semibold text-gray-700">
-      {earnedAchievementIds.length}
+    {earnedAchievements.length}
     </span>
     {' '}из{' '}
     <span className="font-semibold text-gray-700">
@@ -733,65 +759,60 @@ bg-white
 
   <div className="mt-5 space-y-2">
 
-    {achievements.map((achievement) => {
+{latestEarnedAchievements.length === 0 ? (
 
-      const earned =
-        earnedAchievementIds.includes(
-          achievement.id
-        )
+  <p className="text-sm text-gray-500">
+    Пока нет полученных достижений.
+  </p>
 
-      return (
-        <div
-          key={achievement.id}
-          className={`
-            rounded-xl
-            p-3
-            ${
-              earned
-                ? 'bg-amber-50'
-                : 'bg-gray-50 opacity-60'
-            }
-          `}
-        >
+) : (
 
-          <div className="flex items-start gap-2">
+  latestEarnedAchievements.map(
+    (achievement) => (
+      <div
+        key={achievement!.id}
+        className="
+          rounded-xl
+          bg-amber-50
+          p-3
+        "
+      >
 
-            <span className="text-xl">
-              {earned
-                ? achievement.icon
-                : '🔒'}
-            </span>
+        <div className="flex items-start gap-2">
 
-            <div className="min-w-0">
+          <span className="text-xl">
+            {achievement!.icon}
+          </span>
 
-              <p
-                className={`
-                  text-sm
-                  font-semibold
-                  ${
-                    earned
-                      ? 'text-gray-800'
-                      : 'text-gray-500'
-                  }
-                `}
-              >
-                {achievement.title}
-              </p>
+          <div className="min-w-0">
 
-              <p className="mt-1 text-xs text-gray-500">
-                {achievement.description}
-              </p>
+            <p className="
+              text-sm
+              font-semibold
+              text-gray-800
+            ">
+              {achievement!.title}
+            </p>
 
-            </div>
+            <p className="
+              mt-1
+              text-xs
+              text-gray-500
+            ">
+              {achievement!.description}
+            </p>
 
           </div>
 
         </div>
-      )
 
-    })}
+      </div>
+    )
+  )
 
-  </div>
+)}
+
+</div>
 
   <a
     href="/challenges/achievements"
