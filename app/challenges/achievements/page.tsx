@@ -470,7 +470,18 @@ const finishedProcessesFromChallenges =
         {achievementProgress.finishedProcessesFromChallenges}
       </span>
     </p>
+
+   
   </>
+)}
+
+{category.id === 'streaks' && (
+  <p className="mt-1 text-sm text-gray-500">
+    Лучшая серия дней подряд:{' '}
+    <span className="font-semibold text-gray-700">
+      {achievementProgress.longestDayStreak}
+    </span>
+  </p>
 )}
 
 

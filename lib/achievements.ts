@@ -307,6 +307,87 @@ export const achievements: Achievement[] = [
   },
 ]
 
+function getLongestDayStreak(
+  challengeHistory: {
+    completedAt?: string
+  }[]
+): number {
+
+  const completedDayKeys =
+    challengeHistory
+      .filter(
+        (challenge) =>
+          challenge.completedAt
+      )
+      .map(
+        (challenge) => {
+          const date =
+            new Date(
+              challenge.completedAt!
+            )
+
+          return `${date.getFullYear()}-${String(
+            date.getMonth() + 1
+          ).padStart(2, '0')}-${String(
+            date.getDate()
+          ).padStart(2, '0')}`
+        }
+      )
+
+  const uniqueCompletedDays =
+    [...new Set(completedDayKeys)]
+      .sort()
+
+  let currentDayStreak = 0
+  let longestDayStreak = 0
+
+  for (
+    let i = 0;
+    i < uniqueCompletedDays.length;
+    i++
+  ) {
+
+    if (i === 0) {
+      currentDayStreak = 1
+    } else {
+
+      const previousDate =
+        new Date(
+          uniqueCompletedDays[i - 1]
+        )
+
+      const currentDate =
+        new Date(
+          uniqueCompletedDays[i]
+        )
+
+      const differenceInDays =
+        Math.round(
+          (
+            currentDate.getTime() -
+            previousDate.getTime()
+          ) /
+          (1000 * 60 * 60 * 24)
+        )
+
+      if (
+        differenceInDays === 1
+      ) {
+        currentDayStreak += 1
+      } else {
+        currentDayStreak = 1
+      }
+    }
+
+    longestDayStreak =
+      Math.max(
+        longestDayStreak,
+        currentDayStreak
+      )
+  }
+
+  return longestDayStreak
+}
 
 export function getEarnedAchievementIds(
   challengeHistory: {
@@ -509,6 +590,23 @@ const completedMainChallengeTypes =
   }
 
 
+  const longestDayStreak =
+  getLongestDayStreak(
+    challengeHistory
+  )
+
+if (longestDayStreak >= 3) {
+  earned.push('three_day_streak')
+}
+
+if (longestDayStreak >= 7) {
+  earned.push('seven_day_streak')
+}
+
+if (longestDayStreak >= 14) {
+  earned.push('fourteen_day_streak')
+}
+
   return earned
 }
 
@@ -606,6 +704,12 @@ export function getAchievementProgress(
     previousType =
       challenge.type
   }
+
+  const longestDayStreak =
+  getLongestDayStreak(
+    challengeHistory
+  )
+
   const inactiveChallenges =
   challengeHistory.filter(
     (challenge) =>
@@ -642,6 +746,7 @@ const finishedProcessesFromChallenges =
     uniqueChallengeTypes,
     completedMainChallengeTypes,
     longestNoRepeatStreak,
+    longestDayStreak,
     inactiveChallenges,
     finishChallenges,
     uniqueChallengeProcesses,
