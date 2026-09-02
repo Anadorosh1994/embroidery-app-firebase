@@ -22,6 +22,9 @@ const [averagePerDay, setAveragePerDay] =
 
   const now = new Date()
 
+  const [dailyStitches, setDailyStitches] =
+  useState<number[]>([])
+
 const [selectedMonth, setSelectedMonth] =
   useState(
     String(now.getMonth() + 1).padStart(2, '0')
@@ -121,6 +124,16 @@ if (
     let totalToday = 0;
     let totalMonth = 0;
 
+    const daysInMonth =
+    new Date(
+      Number(selectedYear),
+      Number(selectedMonth),
+      0
+    ).getDate()
+  
+  const dailyTotals =
+    Array(daysInMonth).fill(0)
+
 const activeDaysSet =
   new Set<string>();
 
@@ -173,6 +186,16 @@ if (processId) {
       )
     ) {
       totalMonth += stitches;
+
+      const day =
+  Number(sessionDate.slice(8, 10))
+
+if (
+  day >= 1 &&
+  day <= daysInMonth
+) {
+  dailyTotals[day - 1] += stitches
+}
 
       const processId =
   doc.ref.parent.parent?.id;
@@ -227,6 +250,8 @@ if (
 
     setTodayStitches(totalToday);
     setMonthStitches(totalMonth);
+
+    setDailyStitches(dailyTotals)
 
 setActiveDays(
   activeDaysSet.size
@@ -372,102 +397,146 @@ setStartedProcesses(
       {averagePerDay}
     </p>
   </div>
-
-  
+  </div>
 
   <div className="mt-8 rounded-2xl bg-white p-6 shadow">
-  <div className="mb-4 flex items-center justify-between">
-  <h2 className="text-xl font-bold">
-    Процессы за период
+  <h2 className="mb-6 text-xl font-bold">
+    Стежки по дням
   </h2>
 
-  <span className="text-sm text-stone-500">
-    Активных: {processStats.length}
-  </span>
-</div>
+  <div className="flex h-64 items-end gap-1">
+  {dailyStitches.map((stitches, index) => {
+    const maxStitches =
+      Math.max(...dailyStitches, 1)
 
-  {processStats.map(
-    (process) => (
+    const height =
+      stitches > 0
+        ? Math.max(
+            (stitches / maxStitches) * 100,
+            3
+          )
+        : 0
+
+    return (
       <div
-        key={process.title}
-        className="flex justify-between border-b py-2"
+        key={index}
+        className="flex h-full min-w-0 flex-1 flex-col items-center justify-end"
       >
-        <span>
-          {process.title}
-        </span>
+        <div className="mb-1 text-xs text-stone-500">
+          {stitches > 0 ? stitches : ''}
+        </div>
 
-        <span>
-  {process.stitches}
-  {' '}
-  (
-  {monthStitches > 0
-    ? Math.round(
-        process.stitches /
-          monthStitches *
-          100
-      )
-    : 0}
-  %)
-</span>
+        <div
+          className="w-full rounded-t-md bg-stone-400"
+          style={{
+            height: `${height}%`,
+          }}
+          title={`${index + 1} число: ${stitches} стежков`}
+        />
+
+        <div className="mt-2 text-xs text-stone-500">
+          {index + 1}
+        </div>
       </div>
     )
-  )}
+  })}
 </div>
-
-<div className="mt-8 rounded-2xl bg-white p-6 shadow">
-  <h2 className="mb-4 text-xl font-bold">
-    Финиши за период
-  </h2>
-
-  <p className="mb-3 text-stone-600">
-    Всего: {finishedProcesses.length}
-  </p>
-
-  {finishedProcesses.length === 0 ? (
-    <p>Нет финишей</p>
-  ) : (
-    finishedProcesses.map(
-      (title) => (
-        <div
-          key={title}
-          className="border-b py-2"
-        >
-          ✓ {title}
-        </div>
-      )
-    )
-  )}
-</div>
-
-<div className="mt-8 rounded-2xl bg-white p-6 shadow">
-  <h2 className="mb-4 text-xl font-bold">
-    Начато за период
-  </h2>
-
-  <p className="mb-3 text-stone-600">
-    Всего: {startedProcesses.length}
-  </p>
-
-  {startedProcesses.length === 0 ? (
-    <p>Нет новых процессов</p>
-  ) : (
-    startedProcesses.map(
-      (title) => (
-        <div
-          key={title}
-          className="border-b py-2"
-        >
-          + {title}
-        </div>
-      )
-    )
-  )}
 </div>
 
 
+<div className="mt-8 grid gap-4 md:grid-cols-3">
 
+  <div className="rounded-2xl bg-white p-6 shadow">
+    <div className="mb-4 flex items-center justify-between">
+      <h2 className="text-xl font-bold">
+        Процессы за период
+      </h2>
 
-</div>
+      <span className="text-sm text-stone-500">
+        Активных: {processStats.length}
+      </span>
     </div>
+
+    {processStats.map(
+      (process) => (
+        <div
+          key={process.title}
+          className="flex justify-between border-b py-2"
+        >
+          <span>
+            {process.title}
+          </span>
+
+          <span>
+            {process.stitches}
+            {' '}
+            (
+            {monthStitches > 0
+              ? Math.round(
+                  process.stitches /
+                    monthStitches *
+                    100
+                )
+              : 0}
+            %)
+          </span>
+        </div>
+      )
+    )}
+  </div>
+
+  <div className="rounded-2xl bg-white p-6 shadow">
+    <h2 className="mb-4 text-xl font-bold">
+      Финиши за период
+    </h2>
+
+    <p className="mb-3 text-stone-600">
+      Всего: {finishedProcesses.length}
+    </p>
+
+    {finishedProcesses.length === 0 ? (
+      <p>Нет финишей</p>
+    ) : (
+      finishedProcesses.map(
+        (title) => (
+          <div
+            key={title}
+            className="border-b py-2"
+          >
+            ✓ {title}
+          </div>
+        )
+      )
+    )}
+  </div>
+
+  <div className="rounded-2xl bg-white p-6 shadow">
+    <h2 className="mb-4 text-xl font-bold">
+      Начато за период
+    </h2>
+
+    <p className="mb-3 text-stone-600">
+      Всего: {startedProcesses.length}
+    </p>
+
+    {startedProcesses.length === 0 ? (
+      <p>Нет новых процессов</p>
+    ) : (
+      startedProcesses.map(
+        (title) => (
+          <div
+            key={title}
+            className="border-b py-2"
+          >
+            + {title}
+          </div>
+        )
+      )
+    )}
+  </div>
+
+</div>
+
+</div>
   );
 }
