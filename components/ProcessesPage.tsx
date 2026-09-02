@@ -301,14 +301,14 @@ const [editingHistoryStitches, setEditingHistoryStitches] =
             )
           )
     
-        const updatedHistory =
+          const updatedHistory: any[] =
           historySnapshot.docs.map(
             (doc) => ({
               id: doc.id,
               ...doc.data(),
             })
           )
-    
+        
         const totalCompleted =
           updatedHistory.reduce(
             (sum: number, entry: any) =>
