@@ -493,6 +493,9 @@ if (user) {
           
             type:
               challenge.type,
+
+              specialId:
+  challenge.specialId,
           
             title:
               challenge.title,

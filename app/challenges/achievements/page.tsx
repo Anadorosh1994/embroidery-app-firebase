@@ -485,6 +485,24 @@ const finishedProcessesFromChallenges =
 )}
 
 
+{category.id === 'special' && (
+  <>
+    <p className="mt-1 text-sm text-gray-500">
+      Специальных заданий выполнено:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.specialChallenges}
+      </span>
+    </p>
+
+    <p className="mt-1 text-sm text-gray-500">
+      Осенних заданий выполнено:{' '}
+      <span className="font-semibold text-gray-700">
+        {achievementProgress.autumnSpecialChallenges}
+      </span>
+    </p>
+  </>
+)}
+
                     </div>
           
                   </div>

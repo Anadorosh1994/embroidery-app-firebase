@@ -397,6 +397,7 @@ export function getEarnedAchievementIds(
     completedAt?: string
     processId?: string
     finishedProcess?: boolean
+    specialId?: string
   }[]
   ): string[] {
 
@@ -472,6 +473,33 @@ const finishedProcessesFromChallenges =
   challengeHistory.filter(
     (challenge) =>
       challenge.finishedProcess === true
+  ).length
+
+  const specialChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type === 'special'
+  ).length
+
+const autumnSpecialIds = [
+  'autumnTea',
+  'rainyEvening',
+  'autumnAudiobook',
+  'warmBlanket',
+  'autumnMusic',
+  'darkEvening',
+  'autumnWalk',
+  'autumnWeekend',
+]
+
+const autumnSpecialChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type === 'special' &&
+      challenge.specialId &&
+      autumnSpecialIds.includes(
+        challenge.specialId
+      )
   ).length
 
   const sortedHistory =
@@ -607,6 +635,14 @@ if (longestDayStreak >= 14) {
   earned.push('fourteen_day_streak')
 }
 
+if (specialChallenges >= 1) {
+  earned.push('first_special_challenge')
+}
+
+if (autumnSpecialChallenges >= 3) {
+  earned.push('autumn_mood')
+}
+
   return earned
 }
 
@@ -618,6 +654,7 @@ export function getAchievementProgress(
     completedAt?: string
     processId?: string
     finishedProcess?: boolean
+    specialId?: string
   }[]
   ) {
   
@@ -739,6 +776,33 @@ const finishedProcessesFromChallenges =
     (challenge) =>
       challenge.finishedProcess === true
   ).length
+
+  const specialChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type === 'special'
+  ).length
+
+const autumnSpecialIds = [
+  'autumnTea',
+  'rainyEvening',
+  'autumnAudiobook',
+  'warmBlanket',
+  'autumnMusic',
+  'darkEvening',
+  'autumnWalk',
+  'autumnWeekend',
+]
+
+const autumnSpecialChallenges =
+  challengeHistory.filter(
+    (challenge) =>
+      challenge.type === 'special' &&
+      challenge.specialId &&
+      autumnSpecialIds.includes(
+        challenge.specialId
+      )
+  ).length
   
   return {
     completedChallenges,
@@ -751,5 +815,7 @@ const finishedProcessesFromChallenges =
     finishChallenges,
     uniqueChallengeProcesses,
     finishedProcessesFromChallenges,
+    specialChallenges,
+    autumnSpecialChallenges,
   }
   }

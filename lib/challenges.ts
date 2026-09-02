@@ -8,6 +8,8 @@ export type Challenge = {
 
   type: string
 
+  specialId?: string
+
   title: string
 
   typeLabel: string
@@ -517,6 +519,8 @@ const special =
     id: challengeId,
   
     type: 'special',
+
+    specialId: special.id,
   
     title: special.title,
 
