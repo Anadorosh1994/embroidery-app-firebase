@@ -1,7 +1,17 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { auth, db } from '../lib/firebase'
+import {
+  auth,
+  db,
+  storage,
+} from '../lib/firebase'
+
+import {
+  ref,
+  uploadBytes,
+  getDownloadURL,
+} from 'firebase/storage'
 import { onAuthStateChanged } from 'firebase/auth'
 
 import {
@@ -57,6 +67,18 @@ const [historyEntries, setHistoryEntries] =
 const [historyTitle, setHistoryTitle] =
   useState('')
 
+  const [historyProcessId, setHistoryProcessId] =
+  useState<string | null>(null)
+
+const [editingHistoryId, setEditingHistoryId] =
+  useState<string | null>(null)
+
+const [editingHistoryDate, setEditingHistoryDate] =
+  useState('')
+
+const [editingHistoryStitches, setEditingHistoryStitches] =
+  useState('')
+
   const [title, setTitle] = useState('')
   const [designer, setDesigner] = useState('');
   const [status, setStatus] = useState('Активен')
@@ -65,6 +87,9 @@ const [historyTitle, setHistoryTitle] =
   const [completedStitches, setCompletedStitches] =
     useState('')
   const [imageUrl, setImageUrl] = useState('')
+
+  const [imageFile, setImageFile] =
+  useState<File | null>(null)
 
   const [editingId, setEditingId] = useState<
     string | null
@@ -212,10 +237,153 @@ const [historyTitle, setHistoryTitle] =
         setHistoryTitle(
           processTitle
         )
-    
+        
+        setHistoryProcessId(
+          processId
+        )
+        
         setHistoryOpen(true)
+
+
       } catch (error) {
         console.error(error)
+      }
+    }
+
+    async function saveHistoryEntry() {
+      if (
+        !historyProcessId ||
+        !editingHistoryId
+      ) {
+        return
+      }
+    
+      const stitches = Number(
+        editingHistoryStitches
+      )
+    
+      if (!editingHistoryDate || stitches <= 0) {
+        alert(
+          'Введите дату и количество крестиков'
+        )
+        return
+      }
+    
+      try {
+        await updateDoc(
+          doc(
+            db,
+            'processes',
+            historyProcessId,
+            'history',
+            editingHistoryId
+          ),
+          {
+            sessionDate:
+              editingHistoryDate,
+            stitches,
+          }
+        )
+    
+        const historySnapshot =
+          await getDocs(
+            query(
+              collection(
+                db,
+                'processes',
+                historyProcessId,
+                'history'
+              ),
+              orderBy(
+                'sessionDate',
+                'desc'
+              )
+            )
+          )
+    
+        const updatedHistory =
+          historySnapshot.docs.map(
+            (doc) => ({
+              id: doc.id,
+              ...doc.data(),
+            })
+          )
+    
+        const totalCompleted =
+          updatedHistory.reduce(
+            (sum: number, entry: any) =>
+              sum + Number(entry.stitches || 0),
+            0
+          )
+    
+        const process =
+          processes.find(
+            (item) =>
+              item.id === historyProcessId
+          )
+    
+        if (process) {
+          const isFinished =
+            totalCompleted >=
+            process.total_stitches
+    
+          await updateDoc(
+            doc(
+              db,
+              'processes',
+              historyProcessId
+            ),
+            {
+              completedStitches:
+                totalCompleted,
+    
+              status:
+                isFinished
+                  ? 'Завершён'
+                  : process.status === 'Завершён'
+                    ? 'Активен'
+                    : process.status,
+    
+              finishedAt:
+                isFinished
+                  ? (
+                      process.finishedAt ||
+                      new Date()
+                        .toISOString()
+                        .split('T')[0]
+                    )
+                  : null,
+    
+              lastActivityDate:
+                updatedHistory.length > 0
+                  ? updatedHistory[0].sessionDate
+                  : '',
+            }
+          )
+        }
+    
+        setHistoryEntries(
+          updatedHistory
+        )
+    
+        setEditingHistoryId(null)
+        setEditingHistoryDate('')
+        setEditingHistoryStitches('')
+    
+        const user =
+          auth.currentUser
+    
+        if (user) {
+          await fetchProcessesFirebase(
+            user
+          )
+        }
+    
+      } catch (error) {
+        console.error(error)
+        alert(
+          'Ошибка изменения записи'
+        )
       }
     }
 
@@ -248,6 +416,23 @@ const [historyTitle, setHistoryTitle] =
       alert('Сначала войдите через Google')
       return
     }
+
+    let finalImageUrl = imageUrl
+
+if (imageFile) {
+  const fileRef = ref(
+    storage,
+    `users/${user.uid}/process-images/${Date.now()}-${imageFile.name}`
+  )
+
+  await uploadBytes(
+    fileRef,
+    imageFile
+  )
+
+  finalImageUrl =
+    await getDownloadURL(fileRef)
+}
   
     const processData = {
       title,
@@ -260,7 +445,7 @@ const [historyTitle, setHistoryTitle] =
         completedStitches
       ),
   
-      imageUrl: imageUrl,
+      imageUrl: finalImageUrl,
   
       userId: user.uid,
     }
@@ -320,7 +505,7 @@ const [historyTitle, setHistoryTitle] =
 
     setTitle(process.title)
     setStatus(process.status)
-
+    setDesigner(process.designer)
     setTotalStitches(
       process.total_stitches.toString()
     )
@@ -330,6 +515,7 @@ const [historyTitle, setHistoryTitle] =
     )
 
     setImageUrl(process.cover_image_url)
+    setImageFile(null)
   }
 
   async function addStitches(processId: string) {
@@ -560,6 +746,7 @@ if (user) {
     setCompletedStitches('')
     setImageUrl('')
     setDesigner('')
+    setImageFile(null)
   }
 
   const filteredProcesses = processes.filter(
@@ -775,7 +962,27 @@ if (user) {
             }
             className="rounded-xl border p-3"
           />
+<div className="flex items-center gap-3">
+  <label className="cursor-pointer rounded-xl bg-stone-200 px-4 py-3 font-medium text-stone-700 hover:bg-stone-300">
+    Выбрать файл
+    <input
+      type="file"
+      accept="image/*"
+      onChange={(e) =>
+        setImageFile(
+          e.target.files?.[0] || null
+        )
+      }
+      className="hidden"
+    />
+  </label>
 
+  <span className="text-sm text-stone-500">
+    {imageFile
+      ? imageFile.name
+      : 'Файл не выбран'}
+  </span>
+</div>
           <input
             type="text"
             placeholder="Ссылка на изображение"
@@ -1118,11 +1325,106 @@ if (user) {
       ) : (
         <ul className="space-y-2">
           {historyEntries.map((entry) => (
-            <li key={entry.id} className="flex justify-between border-b py-2">
-              <span>{entry.sessionDate}</span>
-              <span>{entry.stitches} крестиков</span>
-            </li>
-          ))}
+  <li
+    key={entry.id}
+    className="border-b py-2"
+  >
+    {editingHistoryId === entry.id ? (
+      <div className="flex flex-col gap-2">
+        <input
+          type="date"
+          value={editingHistoryDate}
+          onChange={(e) =>
+            setEditingHistoryDate(
+              e.target.value
+            )
+          }
+          className="rounded-lg border p-2"
+        />
+
+        <input
+          type="number"
+          min="1"
+          value={editingHistoryStitches}
+          onChange={(e) =>
+            setEditingHistoryStitches(
+              e.target.value
+            )
+          }
+          className="rounded-lg border p-2"
+        />
+
+        <div className="flex gap-2">
+          <button
+            onClick={
+              saveHistoryEntry
+            }
+            className="rounded-lg bg-orange-400 px-3 py-2 text-sm font-medium text-white"
+          >
+            Сохранить
+          </button>
+
+          <button
+            onClick={() => {
+              setEditingHistoryId(null)
+              setEditingHistoryDate('')
+              setEditingHistoryStitches('')
+            }}
+            className="rounded-lg bg-gray-200 px-3 py-2 text-sm font-medium"
+          >
+            Отмена
+          </button>
+        </div>
+      </div>
+    ) : (
+      <div className="flex items-center justify-between gap-3 py-1">
+  <div className="flex items-center gap-10">
+    <span className="whitespace-nowrap">
+      {new Date(
+        entry.sessionDate + 'T00:00:00'
+      ).toLocaleDateString(
+        'ru-RU',
+        {
+          day: '2-digit',
+          month: '2-digit',
+          year: 'numeric',
+        }
+      )}
+    </span>
+
+    <span className="whitespace-nowrap">
+      {entry.stitches} крестиков
+    </span>
+  </div>
+
+  <div className="flex shrink-0 gap-2">
+    <button
+      onClick={() => {
+        setEditingHistoryId(
+          entry.id
+        )
+        setEditingHistoryDate(
+          entry.sessionDate
+        )
+        setEditingHistoryStitches(
+          String(entry.stitches)
+        )
+      }}
+      className="rounded-lg bg-stone-200 px-3 py-1 text-sm font-medium"
+    >
+      Изменить
+    </button>
+
+    <button
+      className="rounded-lg bg-red-100 px-3 py-1 text-sm font-medium text-red-700"
+    >
+      Удалить
+    </button>
+  </div>
+</div>
+    )}
+  </li>
+))}
         </ul>
       )}
 
