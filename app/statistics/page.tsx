@@ -48,6 +48,24 @@ const [selectedYear, setSelectedYear] =
   const [startedProcesses, setStartedProcesses] =
   useState<string[]>([])
 
+  const [yearlyStitches, setYearlyStitches] =
+  useState<number[]>([])
+
+const [yearlyDays, setYearlyDays] =
+  useState(0)
+
+const [yearlyStarts, setYearlyStarts] =
+  useState(0)
+
+const [yearlyFinishes, setYearlyFinishes] =
+  useState(0)
+
+  const [bestMonth, setBestMonth] =
+  useState<number | null>(null)
+
+const [worstMonth, setWorstMonth] =
+  useState<number | null>(null)
+
   useEffect(() => {
     loadStatistics()
   }, [
@@ -81,8 +99,18 @@ const processMap:
 
 const started: string[] = []
 
+const yearlyFinished: string[] = []
+
+const yearlyStarted: string[] = []
+
 const firstStitchDates:
   Record<string, string> = {}
+
+  const yearlyTotals =
+  Array(12).fill(0)
+
+const yearlyDaysSet =
+  new Set<string>()
 
 const historyStitches:
   Record<string, number> = {}
@@ -118,6 +146,17 @@ if (
   );
 }
 
+if (
+  data.status === 'Завершён' &&
+  finishDate?.startsWith(
+    selectedYear
+  )
+) {
+  yearlyFinished.push(
+    data.title
+  )
+}
+
   }
 );
 
@@ -151,6 +190,23 @@ const activeDaysSet =
   
     const sessionDate =
       data.sessionDate;
+
+      if (
+        sessionDate?.startsWith(
+          selectedYear
+        )
+      ) {
+        const month =
+          Number(sessionDate.slice(5, 7))
+      
+        if (
+          month >= 1 &&
+          month <= 12
+        ) {
+          yearlyTotals[month - 1] += stitches
+          yearlyDaysSet.add(sessionDate)
+        }
+      }
 
       const processId =
   doc.ref.parent.parent?.id
@@ -245,6 +301,18 @@ if (
           processMap[processId]
         )
       }
+
+      if (
+        historyContainsAllStitches &&
+        firstDate.startsWith(
+          selectedYear
+        ) &&
+        processMap[processId]
+      ) {
+        yearlyStarted.push(
+          processMap[processId]
+        )
+      }
     }
   )
 
@@ -287,6 +355,50 @@ setStartedProcesses(
   started.sort()
 )
 
+setYearlyStitches(yearlyTotals)
+setYearlyDays(yearlyDaysSet.size)
+setYearlyStarts(
+  yearlyStarted.length
+)
+
+setYearlyFinishes(
+  yearlyFinished.length
+)
+
+const activeYearlyMonths =
+  yearlyTotals
+    .map((stitches, index) => ({
+      month: index,
+      stitches,
+    }))
+    .filter(
+      (item) => item.stitches > 0
+    )
+
+if (activeYearlyMonths.length > 0) {
+  const best =
+    activeYearlyMonths.reduce(
+      (max, item) =>
+        item.stitches > max.stitches
+          ? item
+          : max
+    )
+
+  const worst =
+    activeYearlyMonths.reduce(
+      (min, item) =>
+        item.stitches < min.stitches
+          ? item
+          : min
+    )
+
+  setBestMonth(best.month)
+  setWorstMonth(worst.month)
+} else {
+  setBestMonth(null)
+  setWorstMonth(null)
+}
+
 
   }
   const months = [
@@ -303,6 +415,19 @@ setStartedProcesses(
     'Ноябрь',
     'Декабрь',
   ]
+
+  const yearlyTotal =
+  yearlyStitches.reduce(
+    (sum, value) => sum + value,
+    0
+  )
+
+const yearlyAverage =
+  yearlyDays > 0
+    ? Math.round(
+        yearlyTotal / yearlyDays
+      )
+    : 0
 
   return (
     <div className="p-8">
@@ -416,6 +541,8 @@ setStartedProcesses(
             3
           )
         : 0
+
+        
 
     return (
       <div
@@ -534,6 +661,144 @@ setStartedProcesses(
       )
     )}
   </div>
+
+</div>
+
+<div className="mt-8">
+  <h2 className="mb-6 text-2xl font-bold">
+    Годовая статистика
+  </h2>
+
+  <div className="grid gap-4 md:grid-cols-4">
+
+    <div className="rounded-2xl bg-white p-6 shadow">
+      <p className="text-sm text-stone-500">
+        Стежков за год
+      </p>
+      <p className="mt-2 text-3xl font-bold">
+        {yearlyTotal}
+      </p>
+    </div>
+
+    <div className="rounded-2xl bg-white p-6 shadow">
+      <p className="text-sm text-stone-500">
+        Вышивальных дней
+      </p>
+      <p className="mt-2 text-3xl font-bold">
+        {yearlyDays}
+      </p>
+    </div>
+
+    <div className="rounded-2xl bg-white p-6 shadow">
+      <p className="text-sm text-stone-500">
+        Среднее за день
+      </p>
+      <p className="mt-2 text-3xl font-bold">
+        {yearlyAverage}
+      </p>
+    </div>
+
+    <div className="rounded-2xl bg-white p-6 shadow">
+      <p className="text-sm text-stone-500">
+        Начато / финишей
+      </p>
+      <p className="mt-2 text-3xl font-bold">
+        {yearlyStarts} / {yearlyFinishes}
+      </p>
+    </div>
+
+  </div>
+
+  <div className="mt-8 rounded-2xl bg-white p-6 shadow">
+  <h2 className="mb-6 text-xl font-bold">
+    Стежки по месяцам
+  </h2>
+
+  <div className="flex h-64 items-end gap-2">
+    {yearlyStitches.map((stitches, index) => {
+      const maxStitches =
+        Math.max(...yearlyStitches, 1)
+
+      const height =
+        stitches > 0
+          ? Math.max(
+              (stitches / maxStitches) * 100,
+              3
+            )
+          : 0
+
+      return (
+        <div
+          key={index}
+          className="flex h-full min-w-0 flex-1 flex-col items-center justify-end"
+        >
+          <div className="mb-1 text-xs text-stone-500">
+            {stitches > 0 ? stitches : ''}
+          </div>
+
+          <div
+            className="w-full rounded-t-md bg-stone-400"
+            style={{
+              height: `${height}%`,
+            }}
+            title={`${months[index]}: ${stitches} стежков`}
+          />
+
+          <div className="mt-2 text-xs text-stone-500">
+            {months[index].slice(0, 3)}
+          </div>
+        </div>
+      )
+    })}
+  </div>
+</div>
+
+
+<div className="mt-8 grid gap-4 md:grid-cols-2">
+
+  <div className="rounded-2xl bg-white p-6 shadow">
+    <h2 className="mb-3 text-xl font-bold">
+      Лучший месяц
+    </h2>
+
+    {bestMonth !== null ? (
+      <>
+        <p className="text-2xl font-bold">
+          {months[bestMonth]}
+        </p>
+        <p className="mt-1 text-stone-500">
+          {yearlyStitches[bestMonth]} стежков
+        </p>
+      </>
+    ) : (
+      <p className="text-stone-500">
+        Пока нет данных
+      </p>
+    )}
+  </div>
+
+  <div className="rounded-2xl bg-white p-6 shadow">
+    <h2 className="mb-3 text-xl font-bold">
+      Самый спокойный месяц
+    </h2>
+
+    {worstMonth !== null ? (
+      <>
+        <p className="text-2xl font-bold">
+          {months[worstMonth]}
+        </p>
+        <p className="mt-1 text-stone-500">
+          {yearlyStitches[worstMonth]} стежков
+        </p>
+      </>
+    ) : (
+      <p className="text-stone-500">
+        Пока нет данных
+      </p>
+    )}
+  </div>
+
+</div>
 
 </div>
 

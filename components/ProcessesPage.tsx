@@ -68,7 +68,8 @@ const [historyTitle, setHistoryTitle] =
   useState('')
 
   const [historyProcessId, setHistoryProcessId] =
-  useState<string | null>(null)
+  useState('')
+
 
 const [editingHistoryId, setEditingHistoryId] =
   useState<string | null>(null)
@@ -247,6 +248,82 @@ const [editingHistoryStitches, setEditingHistoryStitches] =
 
       } catch (error) {
         console.error(error)
+      }
+    }
+
+    async function deleteHistoryEntry(
+      processId: string,
+      historyId: string,
+      stitches: number
+    ) {
+      const confirmed = confirm(
+        'Удалить эту запись из истории?'
+      )
+    
+      if (!confirmed) return
+    
+      try {
+        await deleteDoc(
+          doc(
+            db,
+            'processes',
+            processId,
+            'history',
+            historyId
+          )
+        )
+    
+        const processRef = doc(
+          db,
+          'processes',
+          processId
+        )
+    
+        const processSnapshot =
+          await getDoc(processRef)
+    
+        if (processSnapshot.exists()) {
+          const processData =
+            processSnapshot.data()
+    
+          const newCompletedStitches =
+            Math.max(
+              0,
+              (processData.completedStitches || 0) -
+                stitches
+            )
+    
+          await updateDoc(
+            processRef,
+            {
+              completedStitches:
+                newCompletedStitches,
+    
+              status:
+                newCompletedStitches <
+                (processData.totalStitches || 0)
+                  ? 'Активен'
+                  : 'Завершён',
+            }
+          )
+        }
+    
+        const user = auth.currentUser
+    
+        if (user) {
+          await fetchProcessesFirebase(user)
+        }
+    
+        await openHistory(
+          processId,
+          historyTitle
+        )
+    
+      } catch (error) {
+        console.error(error)
+        alert(
+          'Ошибка удаления записи'
+        )
       }
     }
 
@@ -680,8 +757,12 @@ if (user) {
             type:
               challenge.type,
 
-              specialId:
-  challenge.specialId,
+              ...(challenge.specialId
+                ? {
+                    specialId:
+                      challenge.specialId,
+                  }
+                : {}),
           
             title:
               challenge.title,
@@ -1416,10 +1497,17 @@ if (user) {
     </button>
 
     <button
-      className="rounded-lg bg-red-100 px-3 py-1 text-sm font-medium text-red-700"
-    >
-      Удалить
-    </button>
+  onClick={() =>
+    deleteHistoryEntry(
+      historyProcessId,
+      entry.id,
+      entry.stitches
+    )
+  }
+  className="rounded-lg bg-red-100 px-3 py-1 text-sm font-medium text-red-700"
+>
+  Удалить
+</button>
   </div>
 </div>
     )}
