@@ -595,6 +595,45 @@ if (imageFile) {
     setImageFile(null)
   }
 
+  async function changeProcessStatus(
+    processId: string,
+    newStatus: string
+  ) {
+    try {
+      const updateData: {
+        status: string
+        finishedAt?: string | null
+      } = {
+        status: newStatus,
+      }
+  
+      if (newStatus === 'Завершён') {
+        updateData.finishedAt =
+          new Date()
+            .toISOString()
+            .split('T')[0]
+      }
+  
+      if (newStatus !== 'Завершён') {
+        updateData.finishedAt = null
+      }
+  
+      await updateDoc(
+        doc(db, 'processes', processId),
+        updateData
+      )
+  
+      const user = auth.currentUser
+  
+      if (user) {
+        await fetchProcessesFirebase(user)
+      }
+    } catch (error) {
+      console.error(error)
+      alert('Ошибка изменения статуса')
+    }
+  }
+
   async function addStitches(processId: string) {
     const input = processInput[processId]
   
@@ -1226,11 +1265,32 @@ if (user) {
                             }
                           </h3>
                           
-                          <span className="rounded-full bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700">
-                            {
-                              process.status
-                            }
-                          </span>
+                          <select
+  value={process.status}
+  onChange={(e) =>
+    changeProcessStatus(
+      process.id,
+      e.target.value
+    )
+  }
+  className="rounded-full border border-orange-200 bg-orange-100 px-2 py-1 text-xs font-medium text-orange-700 outline-none"
+>
+  <option value="Запланирован">
+    Запланирован
+  </option>
+
+  <option value="Активен">
+    Активен
+  </option>
+
+  <option value="Пауза">
+    Пауза
+  </option>
+
+  <option value="Завершён">
+    Завершён
+  </option>
+</select>
                         </div>
                         {process.designer && (
   <p className="mt-1 text-sm text-stone-500">
