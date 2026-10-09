@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import {
   GoogleAuthProvider,
   signInWithPopup,
@@ -10,6 +10,20 @@ import { auth } from '@/lib/firebase'
 
 
 export default function Home() {
+
+  const [user, setUser] = useState(auth.currentUser)
+  const [authChecked, setAuthChecked] = useState(false)
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged(
+      (currentUser) => {
+        setUser(currentUser)
+        setAuthChecked(true)
+      }
+    )
+
+    return unsubscribe
+  }, [])
 
   const [
     isLoading,
@@ -74,15 +88,16 @@ export default function Home() {
           Трекер вышивки, процессов и челленджей
         </p>
 
-
-        <div className="
-          mt-8
-          rounded-2xl
-          border
-          border-stone-200
-          bg-white
-          p-6
-        ">
+        {authChecked && !user && (
+          <div className="
+            mt-8
+            rounded-2xl
+            border
+            border-stone-200
+            bg-white
+            p-6
+          ">
+        
 
           <h2 className="
             text-xl
@@ -119,7 +134,8 @@ export default function Home() {
               : 'Войти через Google'}
           </button>
 
-        </div>
+               </div>
+        )}
 
 
         <div className="
